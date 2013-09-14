@@ -1,0 +1,203 @@
+﻿@model PetroOperaciones.Models.Facturacion.PrefacturaEncabezado
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";  
+    ViewBag.Title = "Edit";
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    function enviarFormulario() {
+        document.getElementById("formId").submit();
+    }
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+
+        var documentoOperaciones = $("#DocumentoOperacionesID");
+        //updateInfo();
+
+        documentoOperaciones.change(function () {
+            updateInfo();
+
+
+        });
+
+        function updateInfo() {
+
+            $.getJSON('@Url.Content("~/FacturacionServices/GetClienteByDO")', { documentoOperacionesId: documentoOperaciones.val() }, function (data) {
+                $(data).each(function () {
+                    $("#ClienteID").val(this.ClienteID);
+                    $("#NmCliente").val(this.NmCliente);
+                    $("#NIT").val(this.NIT);
+                    $("#Direccion").val(this.Direccion);
+                    $("#Telefono1").val(this.Telefono1);
+                    $("#Telefono2").val(this.Telefono2);
+                });
+            });
+
+
+            $.getJSON('@Url.Content("~/FacturacionServices/GetDocumentoOperacionesById")', { documentoOperacionesId: documentoOperaciones.val() }, function (data2) {
+                $(data2).each(function () {
+                    $("#AWL").text("");
+                    $("#AWL").text(this.AWL);
+                    $("#BL").text("");
+                    $("#BL").text(this.BL);
+                    $("#HBL").text("");
+                    $("#HBL").text(this.HBL);
+                    $("#Observaciones").text("");
+                    $("#Observaciones").text(this.Observaciones);
+                });
+            });
+
+            $.getJSON('@Url.Content("~/FacturacionServices/GetNotasFacturacionByDocumentoOperacionesId")', { documentoOperacionesId: documentoOperaciones.val() }, function (data3) {
+                $(data3).each(function () {
+                    $("#Anotaciones").text("");
+                    $("#Anotaciones").text(this.Observaciones);
+                });
+            });
+        }
+
+    });
+	
+</script>
+
+<fieldset class="ConsolidadosReportes">
+@using (Html.BeginForm(Html.BeginForm(null, null, FormMethod.Post, new { id = "formId" })))
+{
+
+	<p><h3>Prefactura Documento de Operaciones</h3>  Seleccione el Documento de Operaciones @Html.DropDownList("DocumentoOperacionesID", String.Empty)  @Html.ValidationMessageFor(model => model.DocumentoOperacionesID)</p>
+	 @Html.HiddenFor(model => model.ClienteID)
+    <table class="gt_tbl_searchparameters" >
+
+
+			<tr>
+				<td class="tbl_name">NIT</td>
+				<td>            
+                    @Html.EditorFor(model => model.NIT)
+                    @Html.ValidationMessageFor(model => model.NIT) 
+                </td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Cliente</td>
+				<td>            
+                    @Html.EditorFor(model => model.NmCliente)
+                    @Html.ValidationMessageFor(model => model.NmCliente) 
+                </td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Atención</td>
+				<td>            
+                    @Html.EditorFor(model => model.AtencionSr)
+                    @Html.ValidationMessageFor(model => model.AtencionSr) 
+                </td>
+			</tr>	
+    
+    		<tr>
+				<td class="tbl_name">Dirección</td>
+				<td>            
+                    @Html.EditorFor(model => model.Direccion)
+                    @Html.ValidationMessageFor(model => model.Direccion) 
+                </td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td>            
+                    @Html.EditorFor(model => model.Telefono1)
+                    @Html.ValidationMessageFor(model => model.Telefono1) 
+                </td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td>            
+                    @Html.EditorFor(model => model.Telefono2)
+                    @Html.ValidationMessageFor(model => model.Telefono2) 
+                </td>
+			</tr>
+	</table>
+
+	<table class="gt_tbl_searchparameters"  >
+
+			<tr>
+				<td class="tbl_name">AWL</td>
+				<td  id="awl"></td>
+
+				<td class="tbl_name">HAWB</td>
+				<td id="HAWB"></td>
+				
+				<td class="tbl_name">BL</td>
+				<td  id="BL"></td>	
+
+				<td class="tbl_name">HBL</td>
+				<td  id="HBL"></td>				
+			</tr>			
+			<tr>
+				<td class="tbl_name" >Observaciones</td>
+				<td colspan="7" id="Observaciones"></td>
+			</tr>			
+
+	</table>
+    
+    @Html.ValidationSummary(true)
+	<table class="gt_tbl_searchparameters"  >
+            @Html.HiddenFor(model => model.PrefacturaEncabezadoID)
+
+
+
+			<tr>
+				<td class="tbl_name">Tasa de Cambio </td>
+				<td>            
+                    @Html.EditorFor(model => model.TasaDeCambio)
+                    @Html.ValidationMessageFor(model => model.TasaDeCambio) Formato 1.999,00
+                </td>
+	
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Total Anticipos Recibidos</td>
+				<td>            
+                    @Html.EditorFor(model => model.TotalAnticipos)
+                    @Html.ValidationMessageFor(model => model.TotalAnticipos) Formato 1.999,00
+                </td>
+	
+			</tr>
+            
+			<tr>
+				<td class="tbl_name">Anotaciones</td>
+				<td>            
+                   @Html.EditorFor(model => model.Anotaciones)
+                   @Html.ValidationMessageFor(model => model.Anotaciones)
+                </td>
+	
+			</tr>	            			
+
+	</table>
+    
+
+
+}
+
+
+    <div id="gt_box_contbuttons">
+        <a class="ui-button ui-button-aceptar ui-float-left" href="javascript:enviarFormulario();"><span class="ui-button-img"></span><span class="ui-button-txt">Aceptar y Continuar Ingresando Conceptos</span></a>
+    </div>
+
+</fieldset>
+
+
+
+	
+				
+
+
+
+
+

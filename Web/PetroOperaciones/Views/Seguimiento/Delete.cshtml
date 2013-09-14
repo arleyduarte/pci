@@ -1,0 +1,38 @@
+﻿@model PetroOperaciones.Models.Seguimiento
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Seguimiento</legend>
+
+    <div class="display-label">DocumentoOperaciones</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DocumentoOperaciones.NumeroDO)
+    </div>
+
+    <div class="display-label">Usuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Usuario.Cedula)
+    </div>
+
+    <div class="display-label">Observaciones</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observaciones)
+    </div>
+
+    <div class="display-label">FechaRegistro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaRegistro)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

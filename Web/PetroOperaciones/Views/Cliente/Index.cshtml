@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PetroOperaciones.Models.Cliente>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(source: Model,
+         defaultSort: "Title",
+         rowsPerPage: 15,
+         canPage: true,
+         canSort: true,
+         fieldNamePrefix: "gridItens_",
+        pageFieldName: "inside",
+        selectionFieldName: "selectedRow");
+}
+
+<div class="Consolidados">
+<h2>Clientes</h2>
+<p>&nbsp</p>
+
+@grid.GetHtml(
+            fillEmptyRows: true,
+            alternatingRowStyle: "fila-alternativa",
+            headerStyle: "encabezado-grid",
+            tableStyle: "table table-bordered",            
+            footerStyle: "pie-grid",
+            selectedRowStyle: "webgrid-selected-row",
+            mode: WebGridPagerModes.All,
+            firstText: "<< Primera",
+            previousText: "< Anterior",
+            nextText: "Siguiente >",
+            lastText: "Última >>",
+    columns: new [] {
+         grid.Column("NIT", 
+                format:p=>p.NIT
+                 ),
+         grid.Column("NmCliente", 
+                header: "Nombre",
+                format: p=>p.NmCliente),
+         grid.Column("Direccion", 
+                header: "Dirección",
+                format: p=>p.Direccion),  
+         grid.Column("Telefono1", 
+                header: "Teléfono",
+                format: p=>p.Telefono1),    
+         grid.Column("Telefono2", 
+                header: "Teléfono",
+                format: p=>p.Telefono2),  
+         grid.Column("RazonSocial", 
+                header: "Razón Social",
+                format: p=>p.RazonSocial),
+         grid.Column("ObjetoSocial", 
+                header: "Objeto Social",
+                format: p=>p.ObjetoSocial),                
+         grid.Column("NmPais", 
+                header: "País Origen",
+                format: p=>p.Pais.PaisNm),                                                                              
+         grid.Column("FechaCumpleanos", 
+                header: "Cumpleaños",
+                format: p=>p.FechaCumpleanos.ToShortDateString()),                
+    grid.Column(
+          "", 
+          header: "Acciones",
+          format: @<text>
+                      @Html.ActionLink("Editar", "Edit", new { id = item.ClienteID }) 
+                    |
+                      @Html.ActionLink("Detalles", "Details", new { id = item.ClienteID }) 
+                    |
+                     @Html.ActionLink("Contactos", @Url.Content("../Contacto/ClienteList"), new { ClienteID = item.ClienteID })
+                         |
+                            @Html.ActionLink("Documentos", @Url.Content("../ArchivoDocumentoCliente/Create"), new { ClienteID = item.ClienteID })
+
+                  </text>
+    )                
+})
+
+</div> 
+
+ <div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

@@ -1,0 +1,101 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+
+@model IEnumerable<PetroOperaciones.Models.DocumentoOperaciones>
+
+@{
+    ViewBag.Title = "GetList";
+    WebGrid grid = new WebGrid(Model, canPage: false, rowsPerPage: 10, canSort: false);
+}
+<div class="Consolidados">
+<h2>Documentos de Operaciones</h2>
+<p>&nbsp</p>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+        <div class="editor-field">
+            
+             @Html.DropDownList("ClienteID", null, String.Empty, new { @class = "span4" }) 
+              <input type="submit" value="Buscar"  />                   
+        </div>
+    
+}
+
+<br />
+
+@grid.GetHtml(
+        fillEmptyRows: true,
+        alternatingRowStyle: "fila-alternativa",
+        headerStyle: "encabezado-grid",
+        tableStyle: "table table-bordered",
+        footerStyle: "pie-grid",
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primera",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Última >>",
+    columns: new [] {
+         grid.Column("NumeroDO", 
+                header: "DO",
+                format: p=>p.NumeroDO),
+         grid.Column("FechaCreacion", 
+                header: "Fecha Inicio",
+                format: (item) => item.FechaCreacion.ToString("dd/MM/yyyy")),                        
+         grid.Column("Cliente", 
+                header: "Cliente",
+                format: @<a href="../Cliente/Details/@item.Cliente.ClienteID">@item.Cliente.NmCliente</a>),
+         grid.Column("Estado", 
+                header: "Estado",
+                format: p=>p.EstadoDO.EstadoNm),             
+                
+                
+                
+         grid.Column("Responsable", 
+                header: "Responsable",
+                format: p=>p.UsuarioR.Nombre),
+         grid.Column("Transportador", 
+                header: "Transportador Principal",
+                 format: @<a href="../Transportador/Details/@item.Transportador.TransportadorID">@item.Transportador.TransportadorNm</a>),
+    
+         grid.Column("Origen", 
+                header: "Origen",
+                format: p=>p.PuertoO.PuertoNm),  
+                
+         grid.Column("Destino", 
+                header: "Destino",
+                format: p=>p.PuertoD.PuertoNm),
+                
+         grid.Column("TipoOperacionID", 
+                header: "Operación",
+                format: p=>p.TipoOperacion.TipoOperacionNm),
+				
+         grid.Column("TipoOperacionID", 
+                header: "Clase Mercancia",
+                format: p=>p.ClaseMercancia),      			
+                
+        grid.Column(
+                "", 
+                header: "Acciones",
+                
+                format: @<text>
+                <div class="btn-group">
+                    <a class="btn" href="Details/@item.DocumentoOperacionesID"><i class="icon-list-alt"></i> Detalles</a>
+                    <a class="btn" href="../Seguimiento/Create/?DOID=@item.DocumentoOperacionesID"><i class="icon-file"></i>Seguimientos</a> 
+     
+                    <a class="btn" href="../ArchivoDocumento/Create?DOID=@item.DocumentoOperacionesID"><i class="icon-book"></i>Documentos</a>
+                </div>
+             </text>
+         )                                                                                                  
+              
+                                                
+})
+
+
+ </div>
+
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

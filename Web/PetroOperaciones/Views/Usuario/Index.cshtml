@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model IEnumerable<PetroOperaciones.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="Consolidados">
+<h2>Usuarios</h2>
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Cedula
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Rol
+        </th>
+        <th>
+            Teléfono
+        </th>
+        <th>
+            Celular
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Nombre Usuario
+        </th>
+
+        <th>
+            Usuario Activo
+        </th>
+
+        <th>Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoRol.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreUsuario)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.UsuarioID }) |
+            @Html.ActionLink("Desactivar", "Delete", new { id=item.UsuarioID })
+        </td>
+    </tr>
+}
+
+</table>
+
+</div> 

@@ -1,0 +1,273 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+
+@model PetroOperaciones.Models.DocumentoOperaciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+
+<fieldset class="ConsolidadosReportes">
+
+    <h2>Documento de Operaciones  @Html.DisplayFor(model => model.NumeroDO)</h2>
+    <p>&nbsp</p>
+	<table class="gt_tbl_searchparameters" >
+
+			<tr>
+				<td class="tbl_name">Cliente</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Cliente.NmCliente)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">NIT</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Cliente.NIT)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Dirección</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Cliente.Direccion)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Cliente.Telefono1)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Cliente.Telefono2)</td>
+			</tr>
+
+
+			<tr>
+				<td class="tbl_name">País</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Cliente.Pais.PaisNm)</td>
+			</tr>
+	</table>
+
+	<table class="gt_tbl_searchparameters" >
+
+			<tr>
+				<td class="tbl_name">País de Origen</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Pais.PaisNm)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">País de Destino</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.PaisD.PaisNm)</td>
+			</tr>
+			
+            <tr>
+				<td class="tbl_name">Modalidad</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.TipoModalidad.TipoModalidadNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Tipo Operación</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.TipoModalidadAduanera.TipoModalidadAduaneraNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Descripción de la Operación</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.TipoOperacion.TipoOperacionNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Clase de Mercancia</td>
+				<td class="tbl_info"> @Html.DisplayFor(model => model.ClaseMercancia)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Tipo de Contenedor</td>
+				<td class="tbl_info"> @Html.DisplayFor(model => model.TipoContenedor.TipoContenedorNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Peso Bruto</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.PesoBruto) Kilogramos</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">No Piezas</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.NoPiezas) @Html.DisplayFor(model => model.TipoPieza.TipoPiezaNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Volumen</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Volumen) Metros Cúbicos</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Valor</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Valor) @Html.DisplayFor(model => model.TipoMoneda.TipoMonedaNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Posición Arancelaria</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.PosicionArancelaria)</td>
+			</tr>
+
+
+	</table>
+
+
+
+	<table class="gt_tbl_searchparameters" >
+
+			<tr>
+				<td class="tbl_name">Medio de Transporte</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.MedioTransporte.MedioTransporteNm)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">AWB</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.AWB)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">HAWB</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.HAWB)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">BL</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.BL)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">HBL</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.HBL)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Buque</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Buque)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Vuelo</td>
+				<td class="tbl_info"> @Html.DisplayFor(model => model.Vuelo)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Origen</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.PuertoO.PuertoNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Destino</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.PuertoD.PuertoNm)</td>
+			</tr>
+	</table>
+
+
+	<table class="gt_tbl_searchparameters" >
+
+			<tr>
+				<td class="tbl_name">Transportador</td>
+				<td class="tbl_info"> @Html.DisplayFor(model => model.Transportador.TransportadorNm)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Transportador Nacional</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.TransportadorNacional.TransportadorNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Freight Forwarder</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.FreightForwarder.TransportadorNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Shipper</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Shipper)  @Html.DisplayFor(model => model.NoFacturaShipper)</td>
+			</tr>
+
+	</table>
+
+	<table class="gt_tbl_searchparameters" >
+
+			<tr>
+				<td class="tbl_name">Usuario Creador</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.UsuarioC.Nombre)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Usuario Responsable</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.UsuarioR.Nombre)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Fecha de Inicio de Operación</td>
+				<td class="tbl_info">@Model.FechaCreacion.ToShortDateString()</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Fecha de Cierre</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.FechaCierre)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Fecha de Finalización (largo y corto plazo)</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.FechaFinalizacion)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Fecha de Registro en el sistema</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.FechaRegistro)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Observaciones</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Observaciones)</td>
+			</tr>
+
+	</table>
+
+	<table class="gt_tbl_searchparameters" >
+
+			<tr>
+				<td class="tbl_name">Estado</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.EstadoDO.EstadoNm)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Usuario Finalizador DO</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.NombreUsuarioFinalizadorDO)</td>
+			</tr>
+
+
+			<tr>
+				<td class="tbl_name">Fecha de Cierre</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.FechaCierre)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Lista de Chequeo</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.ChequeoRealizado)</td>
+			</tr>
+
+
+	</table>
+
+<div id="gt_box_contbuttons">
+   
+   <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>
+
+
+   <a class="ui-button ui-button-inscribir ui-float-left" href="../Edit/@Model.DocumentoOperacionesID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Editar</span></a>
+
+   <a class="ui-button ui-button-adicionar ui-float-left" href="../../Seguimiento/Create?DOID=@Model.DocumentoOperacionesID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Seguimientos</span></a>
+
+   <a class="ui-button ui-button-exppdf ui-float-left" href="../../ArchivoDocumento/Create?DOID=@Model.DocumentoOperacionesID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Documentos</span></a>
+
+   <a class="ui-button ui-button-editar ui-float-left" href="../../ChequeoDO/Create?DOID=@Model.DocumentoOperacionesID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Lista de Chequeo</span></a>
+
+   <a class="ui-button ui-button-expexcel ui-float-left" href="../../Seguimiento/GetReporteFinal?DOID=@Model.DocumentoOperacionesID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Reporte Final</span></a>
+ 
+</div>
+
+
+
+</fieldset>
+

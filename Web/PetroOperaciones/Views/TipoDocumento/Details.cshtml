@@ -1,0 +1,20 @@
+﻿@model PetroOperaciones.Models.TipoDocumento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TipoDocumento</legend>
+
+    <div class="display-label">TipoDocumentoNm</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDocumentoNm)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TipoDocumentoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

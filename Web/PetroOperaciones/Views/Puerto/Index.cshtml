@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PetroOperaciones.Models.Puerto>
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<div class="ConsolidadosPQ">
+<h2>Puertos </h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Puerto
+        </th>
+        <th>
+            Acción 
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PuertoNm)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.PuertoID }) 
+
+        </td>
+    </tr>
+}
+
+</table>
+</div> 
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

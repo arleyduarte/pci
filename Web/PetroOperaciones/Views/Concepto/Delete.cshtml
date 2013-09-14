@@ -1,0 +1,28 @@
+﻿@model PetroOperaciones.Models.Facturacion.Concepto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Concepto</legend>
+
+    <div class="display-label">ConceptoNm</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ConceptoNm)
+    </div>
+
+    <div class="display-label">TipoDeIngreso</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDeIngreso.TipoDeIngresoNm)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

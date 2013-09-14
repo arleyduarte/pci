@@ -1,0 +1,96 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.Transportador
+
+@{
+    ViewBag.Title = "Details";
+}
+<fieldset class="ConsolidadosReportes">
+  
+   <h2>@Html.DisplayFor(model => model.TransportadorNm)</h2>
+   <p>&nbsp</p>
+
+   <table class="gt_tbl_searchparameters" >
+
+
+			<tr>
+				<td class="tbl_name">NIT</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.NIT)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Dirección</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Direccion)</td>
+			</tr>
+             
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Telefono)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Tipo</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.TipoTransportador.TipoTransportadorNm)</td>
+			</tr>
+
+
+	</table>
+
+   <table class="gt_tbl_searchparameters" >
+
+			<tr>
+				<td class="tbl_name">Contacto</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Contacto1Nm)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Cargo</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Contacto1Cargo)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Contacto1Telefono)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Email</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Contacto1Email)</td>
+			</tr>
+	</table>	
+
+   <table class="gt_tbl_searchparameters" >
+
+			<tr>
+				<td class="tbl_name">Contacto</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Contacto2Nm)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Cargo</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Contacto2Cargo)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Contacto2Telefono)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Email</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Contacto2Email)</td>
+			</tr>
+	</table>	
+
+<div id="gt_box_contbuttons">
+   <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>
+
+   <a class="ui-button ui-button-inscribir ui-float-left" href="../Edit/@Model.TransportadorID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Editar</span></a>
+
+   <a class="ui-button ui-button-exppdf ui-float-left" href="../../ArchivoDocumentoTransportador/Create?TransportadorID=@Model.TransportadorID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Documentos</span></a>
+     
+  
+</div>
+
+</fieldset>
+
+
+

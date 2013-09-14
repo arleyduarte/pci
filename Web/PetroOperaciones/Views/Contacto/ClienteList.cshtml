@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PetroOperaciones.Models.Contacto>
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@{
+    ViewBag.Title = "ClienteList";
+    WebGrid grid = new WebGrid(Model);
+}
+
+<div class="Consolidados">
+<h2>Contactos</h2>
+<p>&nbsp</p>
+    <div id="gt_box_contbuttons">
+        <a class="ui-button ui-button-adicionar ui-float-left" href="../Contacto/CreateByCliente?ClienteID=@ViewBag.TerceroID"><span class="ui-button-img"></span><span class="ui-button-txt">Agregar Contacto</span></a>
+    </div>
+
+@grid.GetHtml(
+                fillEmptyRows: true,
+                alternatingRowStyle: "fila-alternativa",
+                headerStyle: "encabezado-grid",
+                footerStyle: "pie-grid",
+                tableStyle: "table table-bordered",              
+                mode: WebGridPagerModes.All,
+                firstText: "<< Primera",
+                previousText: "< Anterior",
+                nextText: "Siguiente >",
+                lastText: "Última >>",
+    columns: new [] {
+        
+         grid.Column("ContactoNm", 
+                header: "Nombre",
+                format: p=>p.ContactoNm),
+         grid.Column("Teléfono", 
+                header: "Telefono",
+                format: p=>p.Telefono),  
+         grid.Column("Celular", 
+                header: "Celular",
+                format: p=>p.Celular),   
+         grid.Column("Cargo", 
+                header: "Cargo",
+                format: p=>p.Cargo), 
+                
+         grid.Column("Email", 
+                header: "Email",
+                format: @<a href="mailto:@item.Email">@item.Email</a>),  
+                                                    
+         grid.Column("Cliente", 
+                header: "Cliente",
+                format: p=>p.Cliente.NmCliente),                                                                              
+         grid.Column("FechaCumpleanos", 
+                header: "Fecha de Cumpleaños",
+                format: p=>p.FechaCumpleanos.ToShortDateString()),                
+    grid.Column(
+          "", 
+          header: "Acciones",
+          format: @<text>
+                      @Html.ActionLink("Editar", "EditByCliente", new { id = item.ContactoID }) 
+                    
+                      
+                  </text>
+    )                
+})
+
+<p>
+
+ 
+ </p>
+  </div>
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

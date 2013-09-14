@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ad:Actions xmlns:ad="http://www.excelsys.net/ActionDef" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.excelsys.net/ActionDef ActionDef.xsd ">
+
+	<ActionGroup ID="LOGIN">
+		<Action ID="001" Class="SENDMSG" Param="" Data="ws_dominios" NextActionID="" Desc="" />
+		<Action ID="005" Class="PROCTPL" Param="html/container/login_container.html" Data="html/login/login_form.html" NextActionID="" Desc="" />
+		<Action ID="010" Class="SENDMSG" Param="" Data="tx_login" NextActionID="" Desc="" />
+
+
+		<Action ID="011" Class="LOG_SENDMSG" Param="" Data="LOGIN_SERVICE" NextActionID="" Desc="" />
+
+		<Action ID="013" Class="JUMP" Param="/Session/UserInfo/Active = ''" Data="INVALID_USER" NextActionID="LOGIN-015" Desc="" />
+		<Action ID="015" Class="SENDMSG" Param="" Data="dbCallSPGetProfile" NextActionID="" Desc="" />
+		<Action ID="017" Class="CREATENODE" Param="/Session/UserInfo" Data="Profile" NextActionID="" Desc="" />
+		<Action ID="018" Class="COPY" Param="/Session/SvcRsData/SvcData/Response/APPPROFILE" Data="/Session/UserInfo/Profile" NextActionID="" Desc="" />
+		<Action ID="020" Class="JUMP" Param="/Session/UserInfo/Profile = 'ERROR'" Data="INVALID_USER" NextActionID="VALID_USER" Desc="" />
+	</ActionGroup>
+
+	<ActionGroup ID="SEARCHBL">
+		<Action ID="000" Class="SENDMSG" Param="" Data="dbCallSPListReg" NextActionID="" Desc="" />
+		<Action ID="005" Class="LOG_SENDMSG" Param="" Data="SEARCH_SERVICE" NextActionID="" Desc="" />
+		<Action ID="010" Class="PROCTPL" Param="html/container/site_container.html" Data="html/ListaNegra/showBlackList.html" NextActionID="SEARCHBL" Desc="" />
+	</ActionGroup>
+
+
+	<ActionGroup ID="INSERTBL">
+		<Action ID="000" Class="SENDMSG" Param="" Data="dbCallSPListCauses" NextActionID="" Desc="" />
+		<Action ID="010" Class="PROCTPL" Param="html/container/site_container.html" Data="html/ListaNegra/insert_form.html" NextActionID="" Desc="" />
+		<Action ID="020" Class="SENDMSG" Param="" Data="dbCallSPSaveReg" NextActionID="" Desc="" />
+		<Action ID="025" Class="LOG_SENDMSG" Param="" Data="CRUD_SERVICE" NextActionID="" Desc="" />
+		<Action ID="030" Class="PROCTPL" Param="html/container/site_container.html" Data="html/ListaNegra/insert_result.html" NextActionID="" Desc="" />
+	</ActionGroup>
+
+	<ActionGroup ID="EDITBL">
+		<Action ID="000" Class="SENDMSG" Param="" Data="dbCallSPListReg" NextActionID="" Desc="" />
+		<Action ID="010" Class="PROCTPL" Param="html/container/site_container.html" Data="html/ListaNegra/edit_form.html" NextActionID="" Desc="" />
+		<Action ID="020" Class="SENDMSG" Param="" Data="dbCallSPSaveReg" NextActionID="" Desc="" />
+		<Action ID="025" Class="LOG_SENDMSG" Param="" Data="CRUD_SERVICE" NextActionID="" Desc="" />
+		<Action ID="030" Class="PROCTPL" Param="html/container/site_container.html" Data="html/ListaNegra/insert_result.html" NextActionID="" Desc="" />
+	</ActionGroup>
+	<ActionGroup ID="DELETEBL">
+		<Action ID="000" Class="SENDMSG" Param="" Data="dbCallSPSaveReg" NextActionID="" Desc="" />
+		<Action ID="025" Class="LOG_SENDMSG" Param="" Data="CRUD_SERVICE" NextActionID="SEARCHBL" Desc="" />
+	</ActionGroup>
+
+	<ActionGroup ID="VALIDATEBL">
+		<Action ID="000" Class="PROCTPL" Param="html/container/site_container.html" Data="html/ListaNegra/upload_form.html" NextActionID="" Desc="" />
+
+		<Action ID="010" Class="SENDMSG" Param="" Data="dbCallSPListReg" NextActionID="" Desc="" />
+		<Action ID="020" Class="CREATENODE" Param="/Session/DynaFields" Data="Registries" NextActionID="" Desc="" />
+		<Action ID="030" Class="COPY" Param="/Session/SvcRsData/SvcData/Registries" Data="/Session/DynaFields/Registries" NextActionID="" Desc="" />
+		<Action ID="035" Class="DELETE" Param="/Session/SvcRsData/SvcData/Registries" Data="" NextActionID="" Desc="" />
+		<Action ID="040" Class="SENDMSG" Param="" Data="dbCallSPListTemplates" NextActionID="" Desc="" />
+		<Action ID="050" Class="CREATENODE" Param="/Session/DynaFields" Data="Templates" NextActionID="" Desc="" />
+		<Action ID="060" Class="COPY" Param="/Session/SvcRsData/SvcData/Templates" Data="/Session/DynaFields/Templates" NextActionID="" Desc="" />
+		<Action ID="065" Class="DELETE" Param="/Session/SvcRsData/SvcData/Templates" Data="" NextActionID="" Desc="" />
+		<Action ID="070" Class="SENDMSG" Param="" Data="service" NextActionID="" Desc="" />
+		<Action ID="080" Class="PROCTPL" Param="html/container/site_container.html" Data="html/ListaNegra/validation_result.html" NextActionID="" Desc="" />
+	</ActionGroup>
+
+
+
+
+	<ActionGroup ID="EXPORTTXT">
+		<Action ID="000" Class="SENDMSG" Param="" Data="dbCallSPListReg" NextActionID="" Desc="" />
+		<Action ID="010" Class="EXPORT" Param="pruebaexp.txt" Data="SAVE" NextActionID="HOME" Desc="" />
+	</ActionGroup>
+
+	<ActionGroup ID="LOGOUT">
+		<Action ID="000" Class="DELETE" Param="/Session/ActivateSession" Data="" NextActionID="LOGIN" Desc="" />
+
+	</ActionGroup>
+	<ActionGroup ID="VALID_USER">
+		<Action ID="000" Class="PROCMENU" Param="" Data="MenuDef.xml" NextActionID="" Desc="" />
+		<Action ID="010" Class="PROCTPL" Param="" Data="html/login/autosubmit.html" NextActionID="SEARCHBL" Desc="" />
+	</ActionGroup>
+
+
+
+	<ActionGroup ID="HOME">
+		<Action ID="000" Class="DELETE" Param="/Session/SvcRqData/REG_ID" Data="" NextActionID="VALID_USER" Desc="" />
+
+
+
+
+	</ActionGroup>
+
+
+
+	<ActionGroup ID="CUSTOMER_DATA">
+		<Action ID="000" Class="PROCTPL" Param="" Data="/WEB-INF/Config/AjaxItems/_DatosCliente.xsl" NextActionID="" Desc="" />
+	</ActionGroup>
+
+
+	<ActionGroup ID="TX_OK">
+		<Action ID="000" Class="SENDMSG" Param="" Data="tx_ok" NextActionID="SESSION" Desc="" />
+	</ActionGroup>
+
+
+	<ActionGroup ID="SESSION">
+		<Action ID="000" Class="PROCTPL" Param="html/container/site_container.html" Data="show_session.html" NextActionID="" Desc="" />
+	</ActionGroup>
+	<ActionGroup ID="SESSION_AJAX">
+		<Action ID="000" Class="PROCTPL" Param="" Data="/WEB-INF/Config/AjaxItems/session.xsl" NextActionID="" Desc="" />
+	</ActionGroup>
+	<ActionGroup ID="NO_JS">
+		<Action ID="000" Class="PROCTPL" Param="" Data="/js/lib/no-js.js" NextActionID="" Desc="" />
+	</ActionGroup>
+
+	<ActionGroup ID="ERROR"><!-- <Action ID="000" Class="LOG_SENDMSG" Param="" Data="ERROR_SERVICE" NextActionID="" Desc="" /> -->
+		<Action ID="010" Class="PROCTPL" Param="" Data="error.htm" NextActionID="" Desc="" />
+	</ActionGroup>
+
+	<ActionGroup ID="TIMEOUT">
+		<Action ID="000" Class="PROCTPL" Param="" Data="timeout_error.htm" NextActionID="" Desc="" />
+	</ActionGroup>
+
+	<ActionGroup ID="INVALID_USER">
+		<Action ID="000" Class="PROCTPL" Param="html/container/login_container.html" Data="invalid_user.htm" NextActionID="" Desc="" />
+	</ActionGroup>
+
+	<ActionGroup ID="ERROR_CONNECTOR">
+		<Action ID="000" Class="PROCTPL" Param="" Data="connector_error.htm" NextActionID="" Desc="" />
+	</ActionGroup>
+
+</ad:Actions>

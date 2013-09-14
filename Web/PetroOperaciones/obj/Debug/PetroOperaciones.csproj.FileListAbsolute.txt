@@ -1,0 +1,6 @@
+D:\workspaceNet\PCI\Web\PetroOperaciones\bin\PetroOperaciones.pdb
+D:\workspaceNet\PCI\Web\PetroOperaciones\bin\EntityFramework.dll
+D:\workspaceNet\PCI\Web\PetroOperaciones\bin\EntityFramework.xml
+D:\workspaceNet\PCI\Web\PetroOperaciones\obj\Debug\PetroOperaciones.csprojResolveAssemblyReference.cache
+D:\workspaceNet\PCI\Web\PetroOperaciones\obj\Debug\PetroOperaciones.dll
+D:\workspaceNet\PCI\Web\PetroOperaciones\obj\Debug\PetroOperaciones.pdb

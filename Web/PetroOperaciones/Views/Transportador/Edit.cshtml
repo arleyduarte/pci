@@ -1,0 +1,132 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.Transportador
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar</h2>
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend></legend>
+
+        @Html.HiddenFor(model => model.TransportadorID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TransportadorNm)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TransportadorNm)
+            @Html.ValidationMessageFor(model => model.TransportadorNm)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NIT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NIT)
+            @Html.ValidationMessageFor(model => model.NIT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Direccion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Direccion)
+            @Html.ValidationMessageFor(model => model.Direccion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telefono)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telefono)
+            @Html.ValidationMessageFor(model => model.Telefono)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Contacto1Nm)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Contacto1Nm)
+            @Html.ValidationMessageFor(model => model.Contacto1Nm)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Contacto1Cargo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Contacto1Cargo)
+            @Html.ValidationMessageFor(model => model.Contacto1Cargo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Contacto1Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Contacto1Email)
+            @Html.ValidationMessageFor(model => model.Contacto1Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Contacto1Telefono)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Contacto1Telefono)
+            @Html.ValidationMessageFor(model => model.Contacto1Telefono)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Contacto2Nm)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Contacto2Nm)
+            @Html.ValidationMessageFor(model => model.Contacto2Nm)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Contacto2Cargo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Contacto2Cargo)
+            @Html.ValidationMessageFor(model => model.Contacto2Cargo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Contacto2Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Contacto2Email)
+            @Html.ValidationMessageFor(model => model.Contacto2Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Contacto2Telefono)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Contacto2Telefono)
+            @Html.ValidationMessageFor(model => model.Contacto2Telefono)
+        </div>
+
+        <div class="editor-label">
+         Tipo
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TipoTransportadorID", String.Empty)
+            @Html.ValidationMessageFor(model => model.TipoTransportadorID)
+        </div>
+
+        <p>
+            <input type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+

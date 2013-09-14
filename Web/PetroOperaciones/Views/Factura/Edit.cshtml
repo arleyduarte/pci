@@ -1,0 +1,240 @@
+﻿@model PetroOperaciones.Models.Facturacion.FacturaEncabezado
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";  
+    ViewBag.Title = "Create";
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    function enviarFormulario() {
+        document.getElementById("formId").submit();
+    }
+
+</script>
+
+
+
+<script type="text/javascript">
+    $(function () {
+
+        
+        var documentoOperaciones = $("#DocumentoOperacionesID");
+        updateInfo();
+        
+        documentoOperaciones.change(function () {        
+            updateInfo();
+
+
+        });
+
+        function updateInfo() {
+
+            $.getJSON('@Url.Content("~/FacturacionServices/GetClienteByDO")', { documentoOperacionesId: documentoOperaciones.val() }, function (data) {
+                $(data).each(function () {
+                    $("#ClienteID").val(this.ClienteID);
+                    $("#cliente").text(this.NmCliente);
+                    $("#nit").text(this.NIT);
+                    $("#direccion").text(this.Direccion);
+                    $("#telefono1").text(this.Telefono1);
+                    $("#telefono2").text(this.Telefono2);
+                });
+            });
+
+
+
+            var contactosCliente = $("#AtencionSr");
+            contactosCliente.find('option').remove();
+            $.getJSON('@Url.Content("~/FacturacionServices/GetContactosByDO")', { documentoOperacionesId: documentoOperaciones.val() }, function (data) {
+                $(data).each(function () {
+                    $("<option value=" + this.ContactoID + ">" + this.ContactoNm + "</option>").appendTo(contactosCliente);
+                
+                });
+            });
+
+            $.getJSON('@Url.Content("~/FacturacionServices/GetDocumentoOperacionesById")', { documentoOperacionesId: documentoOperaciones.val() }, function (data2) {
+                $(data2).each(function () {
+                    $("#AWL").text("");
+                    $("#AWL").text(this.AWL);
+                    $("#BL").text("");
+                    $("#BL").text(this.BL);
+                    $("#HBL").text("");
+                    $("#HBL").text(this.HBL);
+                    $("#Observaciones").text("");
+                    $("#Observaciones").text(this.Observaciones);
+                });
+            });
+
+            $.getJSON('@Url.Content("~/FacturacionServices/GetNotasFacturacionByDocumentoOperacionesId")', { documentoOperacionesId: documentoOperaciones.val() }, function (data3) {
+                $(data3).each(function () {
+                    $("#Anotaciones").text("");
+                    $("#Anotaciones").text(this.Observaciones);
+                });
+            });
+        }
+
+    });
+	
+</script>
+
+<fieldset class="ConsolidadosReportes">
+@using (Html.BeginForm(Html.BeginForm(null, null, FormMethod.Post, new { id = "formId" })))
+{
+
+     @Html.HiddenFor(model => model.FacturaEncabezadoID)
+     @Html.HiddenFor(model => model.Estado)
+     @Html.HiddenFor(model => model.NoFacturaSoporte)
+     
+     @Html.EditorFor(model => model.ClienteID)
+	<p><h3>Factura Documento de Operaciones </h3>  Seleccione el Documento de Operaciones @Html.DropDownList("DocumentoOperacionesID", String.Empty)  @Html.ValidationMessageFor(model => model.DocumentoOperacionesID)</p>
+	<table class="gt_tbl_searchparameters" >
+			<tr>
+				<td class="tbl_name">Cliente</td>
+				<td class="tbl_info" id="cliente"></td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Contacto</td>
+				<td class="tbl_info" id="contacto">
+                 @Html.DropDownList("AtencionSr")
+                </td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">NIT</td>
+				<td class="tbl_info" id="nit"></td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Dirección</td>
+				<td class="tbl_info" id="direccion"></td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info" id="telefono1"></td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info" id="telefono2"></td>
+			</tr>
+	</table>
+
+	<table class="gt_tbl_searchparameters"  >
+
+			<tr>
+				<td class="tbl_name">AWL</td>
+				<td  id="awl"></td>
+
+				<td class="tbl_name">HAWB</td>
+				<td id="HAWB"></td>
+				
+				<td class="tbl_name">BL</td>
+				<td  id="BL"></td>	
+
+				<td class="tbl_name">HBL</td>
+				<td  id="HBL"></td>				
+			</tr>			
+			<tr>
+				<td class="tbl_name" >Observaciones</td>
+				<td colspan="7" id="Observaciones"></td>
+			</tr>			
+
+	</table>
+    
+    @Html.ValidationSummary(true)
+	<table class="gt_tbl_searchparameters"  >
+            <tr>
+                <td class="tbl_name">Fecha Factura</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FechaFactura)
+                        @Html.ValidationMessageFor(model => model.FechaFactura)
+                    </div>
+                </td>                        
+            </tr>  
+
+			<tr>
+				<td class="tbl_name">Tasa de Cambio </td>
+				<td>            
+                    @Html.EditorFor(model => model.TasaDeCambio)
+                    @Html.ValidationMessageFor(model => model.TasaDeCambio) Formato 1.999,00
+                </td>
+	
+			</tr>
+
+
+			<tr>
+				<td class="tbl_name">Total Anticipos Recibidos</td>
+				<td>            
+                    @Html.EditorFor(model => model.TotalAnticipos)
+                    @Html.ValidationMessageFor(model => model.TotalAnticipos) Formato 1.999,00
+                </td>	
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Plazo</td>
+				<td>@Html.DropDownList("PlazoFacturaID")</td>	
+			</tr> 
+            
+            <tr>
+                <td class="tbl_name">Fecha Vencimiento</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FechaVencimiento)
+                        @Html.ValidationMessageFor(model => model.FechaVencimiento)
+                    </div>
+                </td>                        
+            </tr>              
+                        
+			<tr>
+				<td class="tbl_name">Anotaciones Internas</td>
+				<td>            
+                   @Html.TextAreaFor(model => model.Anotaciones)
+                   @Html.ValidationMessageFor(model => model.Anotaciones)
+                </td>
+	
+			</tr>
+            
+			<tr>
+				<td class="tbl_name">Referencia 1</td>
+				<td>            
+                   @Html.TextAreaFor(model => model.Referencias1)
+                   @Html.ValidationMessageFor(model => model.Referencias1)
+                </td>
+	
+			</tr>    
+            
+			<tr>
+				<td class="tbl_name">Referencia 2</td>
+				<td>            
+                   @Html.TextAreaFor(model => model.Referencias2)
+                   @Html.ValidationMessageFor(model => model.Referencias2)
+                </td>
+	
+			</tr>
+            
+                                   	            			
+           
+	</table>
+    
+
+
+}
+
+
+    <div id="gt_box_contbuttons">
+        <a class="ui-button ui-button-finalizar ui-float-left" href="javascript:enviarFormulario();"><span class="ui-button-img"></span><span class="ui-button-txt">Crear Factura y Agregar Conceptos</span></a>
+    </div>
+
+</fieldset>
+
+
+
+	
+				
+
+
+
+
+

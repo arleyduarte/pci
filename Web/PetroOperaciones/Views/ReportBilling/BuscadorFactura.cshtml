@@ -1,0 +1,121 @@
+﻿@model PetroOperaciones.Models.Facturacion.BuscadorFacturaViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+    ViewBag.Title = "BuscardorFactura";
+    WebGrid grid = new WebGrid(Model.Facturas, canPage: false, canSort: false);
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#Filtro_ClienteID").removeAttr("data-val");
+        var cliente = $("#ClienteID");
+        updateInfo();
+        cliente.change(function () {
+            updateInfo();
+
+        });
+
+        function updateInfo() {
+            $("#Filtro_ClienteID").val(cliente.val());
+        }
+
+    });
+
+</script>
+
+
+<div class="Consolidados">
+<h2>Facturas</h2>
+<p>&nbsp</p>
+@using (Html.BeginForm("BuscadorFactura", "ReportBilling", FormMethod.Post, new { id = "formId" }))
+{
+    @Html.ValidationSummary(true)
+
+        <div class="editor-date">
+            
+            Cliente
+
+             @Html.DropDownList("ClienteID", null, String.Empty, new { @class = "span3" }) 
+        
+            Fecha Inicial
+            @Html.EditorFor(model => model.Filtro.FechaInicial)
+            @Html.ValidationMessageFor(model => model.Filtro.FechaInicial)
+
+            Fecha Final
+            @Html.EditorFor(model => model.Filtro.FechaFinal)
+            @Html.ValidationMessageFor(model => model.Filtro.FechaFinal)
+
+            @Html.HiddenFor(model => model.Filtro.ClienteID)
+
+           <input type="submit" value="Buscar" />
+
+        </div>    
+    
+}
+
+
+
+@grid.GetHtml(
+        fillEmptyRows: true,
+        alternatingRowStyle: "fila-alternativa",
+        headerStyle: "encabezado-grid",
+        footerStyle: "pie-grid",
+        tableStyle: "table table-bordered",        
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primera",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Última >>",
+    columns: new[] {
+        
+         grid.Column("Factura", 
+                header: "Factura",
+                format: p=>p.NoFacturaSoporte),
+                        
+         grid.Column("DO", 
+                header: "DO",
+                format: @<a href="../DO/Details/@item.DocumentoOperaciones.DocumentoOperacionesID">@item.DocumentoOperaciones.NumeroDO</a>),
+
+         grid.Column("Cliente", 
+                header: "Cliente",
+                format: @<a href="../Cliente/Details/@item.Cliente.ClienteID">@item.Cliente.NmCliente</a>),
+
+         grid.Column("Responsable", 
+                header: "Responsable",
+                format: p=>p.Usuario.Nombre),
+                
+         grid.Column("Estado", 
+                header: "Estado",
+                format: p=>p.EstadoFactura.EstadoNm),  
+                
+                                
+         grid.Column("FechaCreacion", 
+                header: "Fecha Factura",
+                format: (item) => item.FechaFactura.ToString("dd/MM/yyyy")),                                                        
+                
+                                
+         grid.Column("FechaCreacion", 
+                header: "Fecha Creacion",
+                format: (item) => item.FechaCreacion.ToString("dd/MM/yyyy")),
+                
+         grid.Column(
+                "", 
+                header: "Acciones",
+                format:@<text> 
+                    <a href="../FacturaDetalle/Create?EncabezadoID=@item.FacturaEncabezadoID&tienePrefactura=False">Detalles</a> 
+                    |<a href="../FacturaDetalle/GetInvoicePDFFile?FacturaEncabezadoId=@item.FacturaEncabezadoID&tipoMoneda=COP">Descargar Factura</a> 
+                 </text>),                                        
+                                                                                               
+              
+                                                
+})
+
+</div>
+ <div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

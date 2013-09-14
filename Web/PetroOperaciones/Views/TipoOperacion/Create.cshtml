@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.TipoOperacion
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<br />
+<div class="CreacionNuevo">
+
+
+<p>&nbsp</p>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Nueva Descripción Operación</legend>
+
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TipoOperacionNm)
+            @Html.ValidationMessageFor(model => model.TipoOperacionNm)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Crear" class="btn btn-primary" />
+        </p>
+    </fieldset>
+}
+
+ <div class="btn-group">
+     <a class="btn" href="javascript:history.go(-1)"><i class="icon-step-backward"></i> Regresar</a>
+</div>

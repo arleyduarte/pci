@@ -1,0 +1,104 @@
+﻿@model PetroOperaciones.Models.Cotizacion.BuscadorCotizacionViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+    ViewBag.Title = "Buscardor";
+    WebGrid grid = new WebGrid(Model.Cotizaciones, canPage: false, canSort: false);
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+
+<div class="Consolidados">
+<h2>Cotizaciones</h2>
+<p>&nbsp</p>
+@using (Html.BeginForm("Find", "Cotizacion", FormMethod.Post, new { id = "formId" }))
+{
+    @Html.ValidationSummary(true)
+
+        <div class="editor-date">
+            
+
+        
+            Fecha Inicial
+            @Html.EditorFor(model => model.Filtro.FechaInicial)
+            @Html.ValidationMessageFor(model => model.Filtro.FechaInicial)
+
+            Fecha Final
+            @Html.EditorFor(model => model.Filtro.FechaFinal)
+            @Html.ValidationMessageFor(model => model.Filtro.FechaFinal)
+
+
+
+           <input type="submit" value="Buscar" />
+
+        </div>    
+    
+}
+
+
+
+@grid.GetHtml(
+        fillEmptyRows: true,
+        alternatingRowStyle: "fila-alternativa",
+        headerStyle: "encabezado-grid",
+        footerStyle: "pie-grid",
+        tableStyle: "table table-bordered",        
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primera",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Última >>",
+    columns: new[] {
+        
+         grid.Column("Factura", 
+                header: "No Cotización",
+                format: p=>p.CotizacionEncabezadoID),
+                        
+       
+         grid.Column("Cliente", 
+                header: "Cliente",
+                format: p=>p.ClienteNm),
+                
+         grid.Column("Servicio", 
+                header: "Servicio",
+                format: p=>p.Servicio),                
+
+         grid.Column("Responsable", 
+                header: "Asesor Comercial",
+                format: p=>p.UsuarioAsesor.Nombre),
+                
+
+                
+                                
+         grid.Column("FechaCreacion", 
+                header: "Fecha Vigencia",
+                format: (item) => item.FechaCotizacion.ToString("dd/MM/yyyy")),                                                        
+                
+                                
+         grid.Column("FechaCreacion", 
+                header: "Fecha Creacion",
+                format: (item) => item.FechaCreacion.ToString("dd/MM/yyyy")),
+                
+         grid.Column(
+                "", 
+                header: "Acciones",
+                format:@<text> 
+
+                 <div class="btn-group">
+                      <a class="btn" href="../CotizacionDetalle/Create?CotizacionEncabezadoID=@item.CotizacionEncabezadoID"><i class="icon-list-alt"></i> Detalles</a>
+
+                   </div>
+                 </text>),                                        
+                                                                                               
+              
+                                                
+})
+
+</div>
+ <div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

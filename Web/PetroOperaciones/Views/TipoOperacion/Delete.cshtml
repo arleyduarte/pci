@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+
+@model PetroOperaciones.Models.TipoOperacion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>¿Esta seguro que desea eliminar esta Descripción de Operación?</h3>
+<fieldset>
+    <legend></legend>
+
+   
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoOperacionNm)
+    </div>
+</fieldset>
+
+<br />
+@using (Html.BeginForm()) {
+   
+       
+     <div class="btn-group">
+        <a class="btn" href="javascript:history.go(-1)"><i class="icon-step-backward"></i> Regresar</a>
+       <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+    </div>
+   
+}
+

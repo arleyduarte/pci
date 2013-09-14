@@ -1,0 +1,543 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+
+@model PetroOperaciones.Models.DocumentoOperaciones
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="CreacionNuevo">
+
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+
+
+        var medioTransporte = $("#MedioTransporteID");
+        var puertoDestino = $("#PuertoDestino");
+        var puertoOrigen = $("#PuertoOrigen");
+        var transportador = $("#TransportadorID");
+        var tipoOperacion = $("#TipoOperacionID");
+        $('#FechaCreacion').attr('value', $('#FechaFinalizacion').val());
+        $('#trFechaFinalizacion').hide();
+        tipoOperacion.change(function () {
+            mostrarFechaFinalizacion();
+        });
+
+        medioTransporte.change(function () {
+            puertoDestino.find('option').remove();
+            puertoOrigen.find('option').remove();
+            transportador.find('option').remove();
+
+            if (medioTransporte.val() == 1) {
+                opcionesAereo();
+            }
+
+            if (medioTransporte.val() == 2) {
+                opcionesMaritimo();
+            }
+
+
+            $.getJSON('@Url.Content("~/DO/GetListPuertos")', { medioTransporteID: medioTransporte.val() }, function (data) {
+                $(data).each(function () {
+                    $("<option value=" + this.PuertoID + ">" + this.PuertoNm + "</option>").appendTo(puertoDestino);
+                    $("<option value=" + this.PuertoID + ">" + this.PuertoNm + "</option>").appendTo(puertoOrigen);
+                });
+            });
+
+            $.getJSON('@Url.Content("~/DO/GetListTransportadores")', { medioTransporteID: medioTransporte.val() }, function (data) {
+                $(data).each(function () {
+                    $("<option value=" + this.ListItemID + ">" + this.ListItemNm + "</option>").appendTo(transportador);
+
+                });
+            });
+
+        });
+
+    });
+
+
+    function mostrarFechaFinalizacion() {
+        var selectmenu = document.getElementById("TipoOperacionID");
+        var myTest = selectmenu.selectedIndex;
+        var selected_text = selectmenu.options[myTest].text;
+
+        if (selected_text == "Importacion a largo plazo" | selected_text == "Importacion a corto plazo") {
+
+            $('#trFechaFinalizacion').show();
+        }
+
+        else {
+            $('#trFechaFinalizacion').hide();
+        }
+
+    }
+
+    function opcionesAereo() {
+        $('#divAereo').show();
+        $('#divMaritimo').hide();
+    }
+
+    function opcionesMaritimo() {
+        $('#divMaritimo').show();
+        $('#divAereo').hide();
+    }
+
+
+</script>
+
+<h2>Modificar Documento de Operaciones</h2>
+<p>&nbsp</p>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formId" })) {
+    @Html.ValidationSummary(true)
+     @Html.HiddenFor(model => model.DocumentoOperacionesID)
+
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                 <h3>Encabezado <span style="color:black">  @ViewBag.Mensaje</span></h3> 
+                </a>
+              </div>
+              <div id="collapseOne" class="accordion-body collapse in">
+                <div class="accordion-inner">
+	            <table class="DO">
+
+                    <tr>
+                        <td>Número Documento</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.NumeroDO)
+                                @Html.ValidationMessageFor(model => model.NumeroDO)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Cliente</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("ClienteID")
+                                @Html.ValidationMessageFor(model => model.ClienteID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>País Origen</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("PaisID")
+                                @Html.ValidationMessageFor(model => model.PaisID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>País Destino</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("PaisDestinoID")
+                                @Html.ValidationMessageFor(model => model.PaisDestinoID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Responsable</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("UsuarioResponsableID")
+                                @Html.ValidationMessageFor(model => model.UsuarioResponsableID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Medio de Transporte</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("MedioTransporteID", "Seleccione el Medio")
+                                @Html.ValidationMessageFor(model => model.MedioTransporteID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Modalidad</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("TipoModalidadID", "Seleccione la Modalidad")
+                                @Html.ValidationMessageFor(model => model.TipoModalidadID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Tipo Operación</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("TipoModalidadAduaneraID")
+                             </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Descripción de la Operación</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("TipoOperacionID")
+                                @Html.ValidationMessageFor(model => model.TipoOperacionID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Estado</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("Estado")
+                                @Html.ValidationMessageFor(model => model.Estado)
+                            </div>
+                        </td>                        
+                    </tr>
+                </table>
+                 <p><a class="btn btn btn-success" id="buttonNext1">Siguiente</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                  <h3>Información de la Carga</h3>
+                </a>
+              </div>
+              <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                        <div class="editor-label">
+                   Clase de Mercancía
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.ClaseMercancia)
+                    @Html.ValidationMessageFor(model => model.ClaseMercancia)
+                </div>
+
+                   <table class="DO">
+                    <tr>
+                        <td>Volumen</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Volumen)
+                                Unidad de Volumen
+                                @Html.DropDownList("TipoUnidadVolumenID")
+                                @Html.ValidationMessageFor(model => model.Volumen)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>No. de Piezas</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.NoPiezas)
+                                Tipo de  Empaque &nbsp&nbsp
+                                @Html.DropDownList("TipoPiezaID")
+                                @Html.ValidationMessageFor(model => model.NoPiezas)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Peso Bruto</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.PesoBruto)
+                                Kilogramos
+                                @Html.ValidationMessageFor(model => model.PesoBruto)
+                                
+                            </div>
+                        </td>                        
+                    </tr>    
+                    
+                    <tr>
+                        <td>Valor</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Valor)
+                                Tipo de Moneda&nbsp&nbsp
+                                 @Html.DropDownList("TipoMonedaID")
+                                @Html.ValidationMessageFor(model => model.Valor)
+                            </div>
+                        </td>                        
+                    </tr>
+                    
+                    <tr>
+                        <td>Posición Arancelaria</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.PosicionArancelaria)
+                                @Html.ValidationMessageFor(model => model.PosicionArancelaria)
+                            </div>
+                        </td>                        
+                    </tr>
+                                                                             
+                   </table>              
+               
+                 <p><a class="btn btn btn-success" id="buttonNext2">Siguiente</a></p>
+
+
+				</div>
+              </div>
+            </div>
+			
+			
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                 <h3>Datalles del Transporte</h3>
+                </a>
+              </div>
+              <div id="collapseThree" class="accordion-body collapse">
+                <div class="accordion-inner">
+
+                   <table class="DO" id="divAereo">
+                    <tr>
+                        <td>AWB No.</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.AWB)
+                                @Html.ValidationMessageFor(model => model.AWB)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>HAWB No.</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.HAWB)
+                                @Html.ValidationMessageFor(model => model.HAWB)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Vuelo No.</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Vuelo)
+                                @Html.ValidationMessageFor(model => model.Vuelo)
+                            </div>
+                        </td>                        
+                    </tr>                   
+                   </table>
+
+                   <table class="DO" id="divMaritimo">
+                    <tr>
+                        <td>BL No.</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.BL)
+                                @Html.ValidationMessageFor(model => model.BL)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>HBL No.</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.HBL)
+                                @Html.ValidationMessageFor(model => model.HBL)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Buque No.</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Buque)
+                                @Html.ValidationMessageFor(model => model.Buque)
+                            </div>
+                        </td>                        
+                    </tr>                   
+                   </table>
+
+                   <table class="DO">
+
+                    <tr>
+                        <td>Origen</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("PuertoOrigen")
+                                @Html.ValidationMessageFor(model => model.PuertoOrigen)
+                            </div>
+                        </td>                        
+                    </tr> 
+
+                    <tr>
+                        <td>Destino</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("PuertoDestino")
+                                @Html.ValidationMessageFor(model => model.PuertoDestino)
+                            </div>
+                        </td>                        
+                    </tr>     
+                    
+                                 
+                   </table>				
+				               
+                 <p><a class="btn btn btn-success" id="buttonNext3">Siguiente</a></p>
+
+                
+				</div>
+              </div>
+            </div>
+			
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                  <h3>Información Adicional</h3>
+                </a>
+              </div>
+              <div id="collapseFour" class="accordion-body collapse">
+                <div class="accordion-inner">
+				
+                <div class="editor-label">
+                @Html.LabelFor(model => model.Observaciones)
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.Observaciones)
+                    @Html.ValidationMessageFor(model => model.Observaciones)
+                </div>
+
+                   <table class="DO">
+
+                    <tr>
+                        <td>Tipo de Contenedor</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("TipoContenedorID")
+                                @Html.ValidationMessageFor(model => model.TipoContenedorID)
+                            </div>
+                        </td>                        
+                    </tr>  
+                    <tr>
+                        <td>Shipper</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Shipper)
+                                @Html.ValidationMessageFor(model => model.Shipper)
+
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Transportador Principal</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("TransportadorID")
+                                @Html.ValidationMessageFor(model => model.TransportadorID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Transportador Nacional</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("TransportadorNacionalID")
+                                @Html.ValidationMessageFor(model => model.TransportadorNacionalID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Freight Forwarder</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("FreightForwarderID")
+                                @Html.ValidationMessageFor(model => model.FreightForwarderID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+                    <tr>
+                        <td>Fecha Inicio Operación</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.FechaCreacion)
+                                @Html.ValidationMessageFor(model => model.FechaCreacion)
+                            </div>
+                        </td>                        
+                    </tr> 
+
+                    <tr id="trFechaFinalizacion">
+                        <td>Fecha Finalización</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.FechaFinalizacion)
+                                @Html.ValidationMessageFor(model => model.FechaFinalizacion)
+                            </div>
+                        </td>                        
+                    </tr>                   
+                   </table>
+				 <hr />
+                    <div id="gt_box_contbuttons">
+                        <a class="ui-button ui-button-aceptar ui-float-left" href="javascript:enviarFormulario();"><span class="ui-button-img"></span><span class="ui-button-txt">Editar Documento de Operaciones</span></a>
+                    
+                    </div>
+
+                </div>
+              </div>
+            </div>			
+			
+			
+          </div>
+
+}
+
+
+</div>
+<div id="gt_box_contbuttons">
+                     
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>
+
+</div>
+
+
+<script>
+    $("#buttonNext1").click(function () {
+        $("#collapseOne").collapse('hide');
+        $("#collapseTwo").collapse('show');
+    });
+
+    $("#buttonNext2").click(function () {
+        $("#collapseTwo").collapse('hide');
+        $("#collapseThree").collapse('show');
+    });
+
+    $("#buttonNext3").click(function () {
+        $("#collapseThree").collapse('hide');
+        $("#collapseFour").collapse('show');
+    });
+
+</script>
+
+<script type="text/javascript">
+    function enviarFormulario() {
+        document.getElementById("formId").submit();
+    }
+
+</script>

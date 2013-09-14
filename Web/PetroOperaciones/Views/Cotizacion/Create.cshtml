@@ -1,0 +1,310 @@
+﻿@model PetroOperaciones.Models.Cotizacion.CotizacionEncabezado
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+    ViewBag.Title = "Create";
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/bootstrap/bootstrap-typeahead.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    function enviarFormulario() {
+        document.getElementById("formId").submit();
+    }
+
+    $(function () {
+
+
+        var nombreCliente = $("#NombreCliente");
+        nombreCliente.focusout(function () {
+         
+            $("#ClienteNm").val(nombreCliente.val());
+        });
+
+
+    });
+
+
+
+</script>
+
+
+<fieldset class="ConsolidadosReportes">
+@using (Html.BeginForm(Html.BeginForm(null, null, FormMethod.Post, new { id = "formId" })))
+{
+
+    @Html.ValidationSummary(true)
+	<p> <h2>Nueva Cotización</h2> </p>
+	<table class="gt_tbl_searchparameters" >
+            <tr>
+                <td class="tbl_name">Fecha Cotización</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FechaCotizacion)
+                        @Html.ValidationMessageFor(model => model.FechaCotizacion)
+                    </div>
+                </td>                        
+            </tr> 
+
+			<tr>
+				<td class="tbl_name">Cliente</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.HiddenFor(model => model.ClienteNm)
+                       
+                    
+            <input type="text" id="NombreCliente" class="span4"  data-provide="typeahead" data-items="10" data-source='@Html.Raw(ViewBag.datasource)'>
+           @Html.ValidationMessageFor(model => model.ClienteNm)
+           </div>
+                </td>  
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Telefono)
+                        @Html.ValidationMessageFor(model => model.Telefono)
+                    </div>
+                </td>  
+           
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Email</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Email)
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </td>  
+           
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Dirección</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Direccion)
+                        @Html.ValidationMessageFor(model => model.Direccion)
+                    </div>
+                </td>  
+           
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Contacto</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.AtencionSr)
+                        @Html.ValidationMessageFor(model => model.AtencionSr)
+                    </div>
+                </td>  
+           
+			</tr>
+
+
+            
+            <tr>
+                <td class="tbl_name">Vigencia</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FechaVigencia)
+                        @Html.ValidationMessageFor(model => model.FechaVigencia)
+                    </div>
+                </td>                        
+            </tr>   
+
+
+	</table>
+
+
+
+	<table class="gt_tbl_searchparameters"  >
+            
+
+			<tr>
+				<td class="tbl_name">Tasa de Cambio </td>
+				<td>            
+                    @Html.EditorFor(model => model.TasaDeCambio)
+                    @Html.ValidationMessageFor(model => model.TasaDeCambio) Formato 1.999,00
+                </td>
+	
+			</tr>
+                <tr>
+                   <td>Asesor Comercial</td>
+                  <td>              
+                    <div class="editor-field">
+                           @Html.DropDownList("AsesorComercialID", "Seleccione el Asesor")
+                            @Html.ValidationMessageFor(model => model.AsesorComercialID)
+                            </div>
+                        </td>                        
+                    </tr>
+
+            <tr>
+                <td class="tbl_name">Servicio</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Servicio)
+                        @Html.ValidationMessageFor(model => model.Servicio)
+                    </div>
+                </td>                        
+            </tr>  
+
+            <tr>
+                <td class="tbl_name">TTTransito</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.TTTransito)
+                        @Html.ValidationMessageFor(model => model.TTTransito)
+                    </div>
+                </td>                        
+            </tr>  
+
+
+
+                    <tr>
+                        <td>Origen</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("PuertoOrigen")
+                                @Html.ValidationMessageFor(model => model.PuertoOrigen)
+                            </div>
+                        </td>                        
+                    </tr> 
+
+                    <tr>
+                        <td>Destino</td>
+                        <td>              
+                            <div class="editor-field">
+                                @Html.DropDownList("PuertoDestino")
+                                @Html.ValidationMessageFor(model => model.PuertoDestino)
+                            </div>
+                        </td>                        
+                    </tr>  
+
+            
+
+	</table>
+    
+    
+	<table class="gt_tbl_searchparameters"  >
+            
+
+
+
+
+            <tr>
+                <td class="tbl_name">Producto</td>
+                <td>              
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Producto)
+                        @Html.ValidationMessageFor(model => model.Producto)
+                    </div>
+                </td>                        
+            </tr>  
+
+            <tr>
+                <td>Dimensiones</td>
+                <td>              
+                <div class="editor-field">
+                     @Html.EditorFor(model => model.Dimensiones)
+                 
+                    @Html.ValidationMessageFor(model => model.Dimensiones)
+               </div>
+                </td>                        
+            </tr> 
+
+            <tr>
+                <td>Piezas</td>
+                <td>              
+                <div class="editor-field">
+                     @Html.EditorFor(model => model.Piezas)
+                 
+                    @Html.ValidationMessageFor(model => model.Piezas)
+               </div>
+                </td>                        
+            </tr>
+            
+            <tr>
+                <td>KG BR</td>
+                <td>              
+                <div class="editor-field">
+                     @Html.EditorFor(model => model.KGBR)
+                 
+                    @Html.ValidationMessageFor(model => model.KGBR)
+               </div>
+                </td>                        
+            </tr>    
+            
+            <tr>
+                <td>KG AF</td>
+                <td>              
+                <div class="editor-field">
+                     @Html.EditorFor(model => model.KGAF)
+                 
+                    @Html.ValidationMessageFor(model => model.KGAF)
+               </div>
+                </td>                        
+            </tr>                         
+            
+            <tr>
+                <td>Peso Apróximado</td>
+                <td>              
+                <div class="editor-field">
+                     @Html.EditorFor(model => model.PesoAprox)
+                 
+                    @Html.ValidationMessageFor(model => model.PesoAprox)
+               </div>
+                </td>                        
+            </tr>  
+            
+            <tr>
+                <td>Volumen</td>
+                <td>              
+                <div class="editor-field">
+                     @Html.EditorFor(model => model.Volumen)
+                 
+                    @Html.ValidationMessageFor(model => model.Volumen)
+               </div>
+                </td>                        
+            </tr>                        
+
+
+			<tr>
+				<td class="tbl_name">Anotaciones Internas</td>
+				<td>            
+                   @Html.TextAreaFor(model => model.Anotaciones)
+                   @Html.ValidationMessageFor(model => model.Anotaciones)
+                </td>
+			</tr>
+            
+
+	</table>    
+
+
+}
+
+
+    <div id="gt_box_contbuttons">
+        <a class="ui-button ui-button-finalizar ui-float-left" href="javascript:enviarFormulario();"><span class="ui-button-img"></span><span class="ui-button-txt">Crear Cotización y Agregar Conceptos</span></a>
+    </div>
+
+</fieldset>
+
+
+
+
+
+
+
+	
+				
+
+
+
+
+

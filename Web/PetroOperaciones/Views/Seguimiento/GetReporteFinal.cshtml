@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@{
+    ViewBag.Title = "GetUltimosSeguimiento";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 20, defaultSort: "NumeroDO");
+}
+<div class="Consolidados">
+<h2>Reporte Final de la Operación</a> </h2>
+<p>&nbsp</p>
+@grid.GetHtml(
+        fillEmptyRows: true,
+        alternatingRowStyle: "fila-alternativa",
+        headerStyle: "encabezado-grid",
+        footerStyle: "pie-grid",
+        tableStyle: "table table-bordered",        
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primera",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Última >>",
+    columns: new [] {
+         grid.Column("SeguimientoID", 
+                header: "No",
+                format: p=>p.SeguimientoID),
+         grid.Column("NumeroDO", 
+                header: "DO",
+                format: @<a href="../DO/Details/@item.DocumentoOperaciones.DocumentoOperacionesID">@item.DocumentoOperaciones.NumeroDO</a>),                          
+         grid.Column("Observaciones", 
+                header: "Observaciones",
+                format: p=>p.Observaciones),
+         grid.Column("Nombre", 
+                header: "Responsable",
+                format: p=>p.Usuario.Nombre) ,                 
+         grid.Column("FechaRegistro", 
+                header: "Fecha de Registro",
+                format: (item) => item.FechaRegistro.ToString("dd/MM/yyyy")),
+        grid.Column("FechaRegistro", 
+                header: "Hora",
+                format: (item) => item.FechaRegistro.ToString("HH:mm")),
+                
+    grid.Column(
+          "", 
+          header: "Acciones",
+          format: @<text>
+                      @Html.ActionLink("Otros Seguimientos", "Create", new { DOID = item.DocumentoOperaciones.DocumentoOperacionesID }) 
+  
+                  </text> )                                
+})
+ </div>
+
+
+ <div id="gt_box_contbuttons">    
+   <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>
+</div>

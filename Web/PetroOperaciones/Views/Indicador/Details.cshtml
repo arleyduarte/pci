@@ -1,0 +1,46 @@
+﻿@model PetroOperaciones.Models.Facturacion.Indicador
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Indicador</legend>
+
+    <div class="display-label">TipoDeIndicador</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDeIndicador.TipoDeIndicadorNm)
+    </div>
+
+    <div class="display-label">MetaProyectada</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MetaProyectada)
+    </div>
+
+    <div class="display-label">Cumplimiento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cumplimiento)
+    </div>
+
+    <div class="display-label">PeriodoMes</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PeriodoMes)
+    </div>
+
+    <div class="display-label">PeriodoAno</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PeriodoAno)
+    </div>
+
+    <div class="display-label">FechaRegistro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaRegistro)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.IndicadorID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

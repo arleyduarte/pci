@@ -1,0 +1,140 @@
+﻿@model PetroOperaciones.Models.Facturacion.ConfiguracionEmpresa
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar</h2>
+<p>&nbsp</p>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Configuración Empresa</legend>
+
+        @Html.HiddenFor(model => model.ConfiguracionEmpresaID)
+
+        <div class="editor-label">
+          NIT
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NIT)
+            @Html.ValidationMessageFor(model => model.NIT)
+        </div>
+
+        <div class="editor-label">
+            Digito Verificación
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DV)
+            @Html.ValidationMessageFor(model => model.DV)
+        </div>
+
+        <div class="editor-label">
+           Nombre
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Nombre)
+            @Html.ValidationMessageFor(model => model.Nombre)
+        </div>
+
+        <div class="editor-label">
+           Prefijo Factura
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Prefijo)
+            @Html.ValidationMessageFor(model => model.Prefijo)
+        </div>
+
+        <div class="editor-label">
+           Razón Social
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.RazonSocial)
+            @Html.ValidationMessageFor(model => model.RazonSocial)
+        </div>
+
+        <div class="editor-label">
+            Dirección Fiscal
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.DireccionFiscal)
+            @Html.ValidationMessageFor(model => model.DireccionFiscal)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telefono)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telefono)
+            @Html.ValidationMessageFor(model => model.Telefono)
+        </div>
+
+        <div class="editor-label">
+            Correo Eléctronico
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            Resolución DIAN
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Resolucion)
+            @Html.ValidationMessageFor(model => model.Resolucion)
+        </div>
+
+        <div class="editor-label">
+           No Factura Inicial
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NoInicial)
+            @Html.ValidationMessageFor(model => model.NoInicial)
+        </div>
+
+        <div class="editor-label">
+           No Factura Final
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NoIFinal)
+            @Html.ValidationMessageFor(model => model.NoIFinal)
+        </div>
+
+        <div class="editor-label">
+           Ultima Factura Creada
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UltimaFactura)
+            @Html.ValidationMessageFor(model => model.UltimaFactura)
+        </div>
+
+
+
+        <div class="editor-label">
+           Fecha Resolución
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaResolucion)
+            @Html.ValidationMessageFor(model => model.FechaResolucion)
+        </div>
+
+ 
+
+
+
+
+
+        <p>
+            <input type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

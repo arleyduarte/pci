@@ -1,0 +1,4 @@
+D:\workspaceNet\PCI\Web\ReportBuilderForFusionChart\bin\Debug\ReportBuilderForFusionChart.dll
+D:\workspaceNet\PCI\Web\ReportBuilderForFusionChart\bin\Debug\ReportBuilderForFusionChart.pdb
+D:\workspaceNet\PCI\Web\ReportBuilderForFusionChart\obj\Debug\ReportBuilderForFusionChart.dll
+D:\workspaceNet\PCI\Web\ReportBuilderForFusionChart\obj\Debug\ReportBuilderForFusionChart.pdb

@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model IEnumerable<PetroOperaciones.Models.Alertas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="Consolidados">
+<h2>Alertas</h2>
+<p>&nbsp</p>
+
+<table class="table">
+    <tr>
+
+        <th>
+            Alerta
+        </th>
+
+        <th>
+            Para
+        </th>
+        <th>
+            Con Copia
+        </th>
+
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asunto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailCC)
+        </td>
+
+
+
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.AlertaID }) 
+        </td>
+    </tr>
+}
+
+</table>
+
+</div> 

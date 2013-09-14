@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "TotalSeguimientos";
+}
+
+
+<script type="text/javascript" src="../FusionCharts/FusionCharts.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+
+        var yearOfReference = 2010;
+        var today = new Date();
+        var year = today.getFullYear();
+        var chYear = $("#year");
+        chYear.find('option').remove();
+
+        if (yearOfReference != year) {
+            var auxYear = yearOfReference;
+            for (var i = yearOfReference; i <= year; i++) {
+                $("<option value=" + auxYear + ">" + auxYear + "</option>").appendTo(chYear);
+                auxYear++;
+            }
+            $(chYear).val(year);
+        }
+        $.get("../Reports/GetTotalSeguimientos/", { year: chYear.val() }, function (data) {
+            loadData(data);
+        });
+
+        $(chYear).change(function () {
+            $.get("../Reports/GetTotalSeguimientos/", { year: chYear.val() }, function (data) {
+                loadData(data);
+            });
+        })
+
+        function loadData(data) {
+            var myChart = new FusionCharts("../FusionCharts/StackedColumn3D.swf", "arleyduarte", "1000", "450", "0", "0");
+            myChart.setDataXML(data);
+            myChart.setTransparent(true);
+            myChart.render("chartdiv");
+        }
+
+    });
+</script>
+
+
+
+<div class="ConsolidadosReportes">
+    Seleccione el año <select id="year" name="year">
+    </select>
+
+    <div id="chartdiv" class="MarcoReporte">
+    </div>
+</div>
+
+<div id="gt_box_contbuttons">    
+   <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>
+</div>

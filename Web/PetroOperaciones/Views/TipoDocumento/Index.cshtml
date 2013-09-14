@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PetroOperaciones.Models.TipoDocumento>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<div class="ConsolidadosPQ">
+<h2>Tipos de Documento </h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Tipo de Documento
+        </th>
+        <th>Acción</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDocumentoNm)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.TipoDocumentoID }) |
+         </td>
+    </tr>
+}
+
+</table>
+</div>
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

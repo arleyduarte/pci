@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@{
+    ViewBag.Title = "VentasMensualesPorCliente";
+}
+@model PetroOperaciones.Models.FiltroReporteAnoCliente
+<div class="ConsolidadosReportes">
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<p>&nbsp</p>
+@using (Html.BeginForm("VentasMensualesPorCliente", "ReportBilling"))
+{
+        <div class="editor-date">
+            @Html.DropDownList("ClienteID", null, String.Empty, new { @class = "span4" }) 
+            Seleccione el año  @Html.DropDownList("Ano")
+            
+            <input type="submit" value="Aceptar" />
+
+        </div>       
+    
+}
+
+<script language="Javascript" type="text/javascript" src="../FusionCharts/FusionCharts.js"></script>
+
+<table width="100%">
+<tr>
+    <td>
+        <div id="chartdiv" class="MarcoReporte">
+        <script type="text/javascript">
+            var myChart = new FusionCharts("../FusionCharts/Line.swf", "arleyduarte", "910", "450", "0", "0");
+            myChart.setDataXML(@Html.Raw(ViewBag.xml));
+            myChart.setTransparent(true);
+            myChart.render("chartdiv");
+        </script>
+
+    </div>
+    </td>
+
+    </tr>
+
+</table>
+
+</div>
+
+ <div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

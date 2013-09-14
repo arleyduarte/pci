@@ -1,0 +1,25 @@
+﻿@model PetroOperaciones.Models.Facturacion.Concepto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Concepto</legend>
+
+    <div class="display-label">ConceptoNm</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ConceptoNm)
+    </div>
+
+    <div class="display-label">TipoDeIngreso</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDeIngreso.TipoDeIngresoNm)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ConceptoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PetroOperaciones.Models.ArchivoDocumentoCliente>
+           
+@{
+    ViewBag.Title = "List";
+    WebGrid grid = new WebGrid(Model, canPage:false);
+}
+<div class="Consolidados">
+@grid.GetHtml(
+        fillEmptyRows: true,
+        alternatingRowStyle: "fila-alternativa",
+        headerStyle: "encabezado-grid",
+        tableStyle: "table table-bordered",        
+        footerStyle: "pie-grid",
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primera",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Última >>",
+    columns: new [] {
+         grid.Column("ArchivoDocumentoClienteID", 
+                header: "No",
+                format: p=>p.ArchivoDocumentoClienteID),        
+         grid.Column("TipoDocumentoTerceroID", 
+                header: "Tipo Documento",
+                format: p=>p.TipoDocumentoTercero.TipoDocumentoTerceroNm),
+         grid.Column("NoDocumento", 
+                header: "No Documento",
+                format: p=>p.NoDocumento) ,                 
+         grid.Column("NombreArchivo", 
+                header: "Archivo",
+                format: p=>p.NombreArchivo) ,  
+         grid.Column("Nombre", 
+                header: "Responsable",
+                format: p=>p.Usuario.Nombre) ,     
+         grid.Column("FechaVencimiento", 
+                header: "Fecha de Vencimiento",
+                format: (item) => item.FechaVencimiento.ToString("dd/MM/yyyy")),
+                                                           
+         grid.Column("FechaRegistro", 
+                header: "Fecha de Subida",
+                format: (item) => item.FechaRegistro.ToString("dd/MM/yyyy")),
+        grid.Column("FechaRegistro", 
+                header: "Hora de Subida",
+                format: (item) => item.FechaRegistro.ToString("HH:mm")),
+         grid.Column("NombreArchivo", 
+                header: "Descargar",
+                format: (item) => Html.ActionLink("Descargar", "../ArchivosSubidos/DocClientes/"+((string)item.NombreArchivo))),
+         grid.Column("", 
+                header: "Eliminar",
+                format: @<text> @Html.ActionLink("Eliminar", "Delete", new { id = item.ArchivoDocumentoClienteID })  </text>                 
+                ),
+                    grid.Column("", 
+                header: "Editar",
+                format: @<text> @Html.ActionLink("Editar", "Edit", new { id = item.ArchivoDocumentoClienteID })  </text>                 
+                )
+                                                  
+})
+</div>

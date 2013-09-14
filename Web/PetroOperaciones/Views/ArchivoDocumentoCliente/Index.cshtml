@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PetroOperaciones.Models.ArchivoDocumentoCliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Cliente
+        </th>
+        <th>
+            Usuario
+        </th>
+        <th>
+            TipoDocumentoTercero
+        </th>
+        <th>
+            NoDocumento
+        </th>
+        <th>
+            NombreArchivo
+        </th>
+        <th>
+            FechaRegistro
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.NIT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDocumentoTercero.TipoDocumentoTerceroNm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreArchivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaRegistro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ArchivoDocumentoClienteID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ArchivoDocumentoClienteID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArchivoDocumentoClienteID })
+        </td>
+    </tr>
+}
+
+</table>

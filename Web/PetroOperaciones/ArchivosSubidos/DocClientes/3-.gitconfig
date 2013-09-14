@@ -1,0 +1,10 @@
+[user]
+	name = Arley Duarte
+	email = arley.duarte@excelsys.net
+	mail = arley.duarte@excelsys.net
+[github]
+	user = arleyduarte
+	token = 4d9ec3f2ee40e80ef568854c1aa59ccc
+[gui]
+[core]
+	trustctime = true

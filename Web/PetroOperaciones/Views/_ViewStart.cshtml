@@ -1,0 +1,9 @@
+﻿@if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole("Cliente"))
+{
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+
+}else
+{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+

@@ -1,0 +1,65 @@
+﻿@model PetroOperaciones.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Usuario</legend>
+
+    <div class="display-label">Cedula</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cedula)
+    </div>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+    <div class="display-label">TipoRol</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoRol.Descripcion)
+    </div>
+
+    <div class="display-label">Telefono</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefono)
+    </div>
+
+    <div class="display-label">Celular</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Celular)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">NombreUsuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NombreUsuario)
+    </div>
+
+    <div class="display-label">Clave</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Clave)
+    </div>
+
+    <div class="display-label">Estado</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Estado)
+    </div>
+
+    <div class="display-label">FechaCreacion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaCreacion)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UsuarioID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

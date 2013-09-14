@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+
+@model PetroOperaciones.Models.ArchivoDocumento
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>¿Esta seguro que desea eliminar este documento?</h3>
+<fieldset>
+    <legend>Archivo Documento</legend>
+
+    <div class="display-label">Documento Operaciones</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DocumentoOperaciones.NumeroDO)
+    </div>
+
+    <div class="display-label">Usuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Usuario.Nombre)
+    </div>
+
+    <div class="display-label">Tipo Documento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDocumento.TipoDocumentoNm)
+    </div>
+
+    <div class="display-label">No Documento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoDocumento)
+    </div>
+
+    <div class="display-label">Nombre Archivo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NombreArchivo)
+    </div>
+
+    <div class="display-label">Fecha Registro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaRegistro)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Eliminar" /> |
+       <a href="javascript:history.go(-1)">Regresar</a>
+    </p>
+}

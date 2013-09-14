@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model IEnumerable<PetroOperaciones.Models.ArchivoDocumento>
+
+@{
+    ViewBag.Title = "GetListName";
+    WebGrid grid = new WebGrid(Model, canPage: false, canSort: false);
+}
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#TipoDocumentoID").removeClass("input-validation-error cssClass").addClass("yourClass");
+    });
+
+</script>
+
+<div class="Consolidados">
+<h2>Documentos Operaciones</h2>
+<p>&nbsp</p>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+        <div class="editor-field">
+             
+             Ingrese el Número de  Documento
+            @Html.Editor("NoDocumento")
+            Tipo Documento
+            @Html.DropDownList("TipoDocumentoID", null, "Todos", new { @class = "cssClass" })
+
+            <input type="submit" value="Buscar" />   
+        </div>
+    
+}
+
+<br />
+
+
+@grid.GetHtml(
+        fillEmptyRows: true,
+        alternatingRowStyle: "fila-alternativa",
+        headerStyle: "encabezado-grid",
+        footerStyle: "pie-grid",
+        tableStyle: "table table-bordered",        
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primera",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Última >>",
+    columns: new[] {
+         grid.Column("ArchivoDocumentoID", 
+                header: "No",
+                format: p=>p.ArchivoDocumentoID),
+  grid.Column("NumeroDO", 
+                header: "No DO",
+                format: @<a href="../DO/Details/@item.DocumentoOperaciones.DocumentoOperacionesID">@item.DocumentoOperaciones.NumeroDO</a>),                          
+
+         grid.Column("Cliente", 
+                header: "Cliente",
+                format: p=>p.DocumentoOperaciones.Cliente.NmCliente),                                        
+         grid.Column("TipoDocumentoNm", 
+                header: "Tipo Documento",
+                format: p=>p.TipoDocumento.TipoDocumentoNm),               
+         grid.Column("NoDocumento", 
+                header: "No Documento",
+                format: p=>p.NoDocumento) ,                 
+         grid.Column("NombreArchivo", 
+                header: "Archivo",
+                format: p=>p.NombreArchivo) ,  
+         grid.Column("Nombre", 
+                header: "Responsable",
+                format: p=>p.Usuario.Nombre) ,                                
+         grid.Column("FechaRegistro", 
+                header: "Fecha de Subida",
+                format: (item) => item.FechaRegistro.ToString("dd/MM/yyyy")),
+        grid.Column("FechaRegistro", 
+                header: "Hora de Subida",
+                format: (item) => item.FechaRegistro.ToString("HH:mm")),
+         grid.Column("NombreArchivo", 
+                header: "Descargar",
+                format: (item) => Html.ActionLink("Descargar", "../ArchivosSubidos/"+((string)item.NombreArchivo))                 
+                )                                
+})
+
+
+
+ </div>
+  <div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

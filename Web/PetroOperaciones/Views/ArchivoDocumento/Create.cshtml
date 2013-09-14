@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+@model PetroOperaciones.Models.ArchivoDocumento
+@{
+    ViewBag.Title = "Create";
+}
+<div class="CreacionNuevo">
+    <h2>
+        Documentos de la Operación No @ViewBag.NumeroDO</h2>
+    <p>
+        &nbsp</p>
+    <script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        function enviarFormulario() {
+            document.getElementById("formId").submit();
+        }
+
+        function enviarArchivo() {
+            document.getElementById("formFileId").submit();
+        }
+
+    </script>
+    <form action="SendFile" method="post" id="formFileId" enctype="multipart/form-data">
+    <table class="gt_tbl_searchparameters">
+        <tr>
+            <td class="tbl_name">
+                Nombre del Archivo
+            </td>
+            <td class="tbl_info">
+                <input type="file" name="file" id="file" class="file" />
+                <input type="hidden" name="DOID" id="DOID" value="@ViewBag.DOID" />
+            </td>
+        </tr>
+        <tr>
+            <td class="tbl_name">
+                <div id="gt_box_contbuttons">
+                    <a class="ui-button ui-button-adicionar ui-float-left" href="javascript:enviarArchivo();">
+                        <span class="ui-button-img"></span><span class="ui-button-txt">Subir Archivo</span></a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    </form>
+    <table class="gt_tbl_searchparameters">
+        @using (Html.BeginForm("Create", "ArchivoDocumento", FormMethod.Post, new { id = "formId" }))
+        {
+            @Html.ValidationSummary(true)
+
+            @Html.HiddenFor(model => model.DocumentoOperacionesID)
+           
+            <tr>
+                <td class="tbl_name">
+                    Tipo del Documento
+                </td>
+                <td class="tbl_info">@Html.DropDownList("TipoDocumentoID")
+                    @Html.ValidationMessageFor(model => model.TipoDocumentoID)
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="tbl_name">
+                    No de Documento
+                </td>
+                <td class="tbl_info">
+                    @Html.EditorFor(model => model.NoDocumento)
+                    @Html.ValidationMessageFor(model => model.NoDocumento)
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="tbl_name">
+                    Archivo a Subir
+                </td>
+                <td class="tbl_info">
+                    @Html.TextBoxFor(model => model.NombreArchivo, new { @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.NombreArchivo)
+                </td>
+            </tr> 
+            
+            <tr>
+                <td class="tbl_name">
+                   Enviar al Cliente
+                </td>
+                <td class="tbl_info">
+                @Html.CheckBoxFor(model => model.VisibleCliente)
+                          
+                </td>
+            </tr>
+            
+             
+            <tr>
+                <td class="tbl_name">
+                <br />
+                    <div id="gt_box_contbuttons">
+                        <a class="ui-button ui-button-guardar ui-float-left" href="javascript:enviarFormulario();">
+                            <span class="ui-button-img"></span><span class="ui-button-txt">Agregar Archivo</span></a>
+                    </div>
+                </td>
+
+                <td class="tbl_info">
+
+                          
+                </td>
+            </tr>   
+   
+        }
+    </table>
+    @{Html.RenderAction("GetList", "ArchivoDocumento", new { DOID = @Model.DocumentoOperacionesID });}
+</div>
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)">
+        <span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>
+</div>

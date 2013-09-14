@@ -1,0 +1,20 @@
+﻿@model PetroOperaciones.Models.Puerto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Puerto</legend>
+
+    <div class="display-label">PuertoNm</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PuertoNm)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PuertoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

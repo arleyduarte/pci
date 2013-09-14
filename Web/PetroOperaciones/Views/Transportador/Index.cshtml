@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model IEnumerable<PetroOperaciones.Models.Transportador>
+
+@{
+    ViewBag.Title = "GetList";
+    WebGrid grid = new WebGrid(Model);
+}
+<div class="Consolidados">
+<h2>Aliados Estratégicos</h2>
+<p>&nbsp</p>
+@grid.GetHtml(
+                    fillEmptyRows: true,
+                    alternatingRowStyle: "fila-alternativa",
+                    headerStyle: "encabezado-grid",
+                    footerStyle: "pie-grid",
+                    tableStyle: "table table-bordered",
+                    mode: WebGridPagerModes.All,
+                    firstText: "<< Primera",
+                    previousText: "< Anterior",
+                    nextText: "Siguiente >",
+                    lastText: "Última >>",
+    columns: new [] {
+         grid.Column("TransportadorNm", 
+                header: "Nombre",
+                format: p=>p.TransportadorNm),
+         grid.Column("NIT", 
+                header: "NIT",
+                format: p=>p.NIT),
+         grid.Column("TipoTransportadorNm", 
+                header: "Tipo",
+                format: p=>p.TipoTransportador.TipoTransportadorNm),                                  
+         grid.Column("Telefono", 
+                header: "Teléfono",
+                format: p=>p.Telefono),  
+         grid.Column("Direccion", 
+                header: "Dirección",
+                format: p=>p.Direccion),   
+         grid.Column("Contacto1Nm", 
+                header: "Contacto",
+                format: p=>p.Contacto1Nm),
+              
+         grid.Column("Contacto1Telefono", 
+                header: "Teléfono",
+                format: p=>p.Contacto1Telefono),  
+         grid.Column("Contacto1Email", 
+                header: "Email",
+                format: @<a href="mailto:@item.Contacto1Email">@item.Contacto1Email</a>),                  
+
+            
+        grid.Column(
+                "", 
+                header: "Acciones",
+                
+                format: @<text>
+                <div class="btn-group">
+                    <a class="btn" href="Details/@item.TransportadorID"><i class="icon-list-alt"></i> Detalles</a>
+                    <a class="btn" href="Edit/@item.TransportadorID"><i class="icon-edit"></i> Editar</a> 
+                    <a class="btn" href="Delete/@item.TransportadorID"><i class="icon-trash"></i> Eliminar</a>
+                    <a class="btn" href="../ArchivoDocumentoTransportador/Create?TransportadorID=@item.TransportadorID"><i class="icon-book"></i>Documentos</a>
+                </div>
+             </text>
+                
+ 
+    )                
+})
+
+
+</div> 
+
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

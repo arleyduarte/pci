@@ -1,0 +1,63 @@
+﻿@model PetroOperaciones.Models.Cliente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Cliente</legend>
+
+    <div class="display-label">NIT</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NIT)
+    </div>
+
+    <div class="display-label">NmCliente</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NmCliente)
+    </div>
+
+    <div class="display-label">RazonSocial</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RazonSocial)
+    </div>
+
+    <div class="display-label">PaisID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PaisID)
+    </div>
+
+    <div class="display-label">Direccion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Direccion)
+    </div>
+
+    <div class="display-label">Telefono1</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefono1)
+    </div>
+
+    <div class="display-label">Telefono2</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefono2)
+    </div>
+
+    <div class="display-label">FechaCumpleanos</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaCumpleanos)
+    </div>
+
+    <div class="display-label">Estado</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Estado)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

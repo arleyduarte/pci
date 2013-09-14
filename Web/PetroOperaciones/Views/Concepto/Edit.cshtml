@@ -1,0 +1,43 @@
+﻿@model PetroOperaciones.Models.Facturacion.Concepto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<p>&nbsp</p>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Concepto</legend>
+
+        @Html.HiddenFor(model => model.ConceptoID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConceptoNm)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConceptoNm)
+            @Html.ValidationMessageFor(model => model.ConceptoNm)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TipoDeIngresoID, "TipoDeIngreso")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TipoDeIngresoID", String.Empty)
+            @Html.ValidationMessageFor(model => model.TipoDeIngresoID)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

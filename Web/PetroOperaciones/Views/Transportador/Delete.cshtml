@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.Transportador
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Esta seguro que desea eliminar este Aliado Estratégico?</h3>
+<fieldset>
+    <legend>Aliado Estratégico</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TransportadorNm)
+    </div>
+
+    <div class="display-label">NIT</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NIT)
+    </div>
+
+    <div class="display-label">Dirección</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Direccion)
+    </div>
+
+    <div class="display-label">Teléfono</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefono)
+    </div>
+
+
+    <div class="display-label">Tipo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoTransportador.TipoTransportadorNm)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Eliminar" /> 
+        
+    </p>
+}
+

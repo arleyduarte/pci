@@ -1,0 +1,5 @@
+|INNOVUS|reports|EMail-SMTP|mail1|Etiqueta|2|3
+1|dacaicedo@unicauca.edu.co|Dario|InstalacionPlataforma|Texto4||refEmailPruebax|genero=Senor##cliente=Juaquin Ramos##producto=LIMSP SDP##fecha=10 de Junio de 2011
+2|andrescaicedom@gmail.com|Dario|InstalacionPlataforma|Texto4||refEmailPruebax|genero=Senor##cliente=Juaquin Ramos##producto=LIMSP SDP##fecha=10 de Junio de 2011
+3|andres.caicedo@excelsys.net|Dario|InstalacionPlataforma|Texto4||refEmailPruebax|genero=Senor##cliente=Juaquin Ramos##producto=LIMSP SDP##fecha=10 de Junio de 2011
+<EOF>

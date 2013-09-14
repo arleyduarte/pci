@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PetroOperaciones.Models.Facturacion.Indicador>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+<br />
+
+<div class="ConsolidadosPQ">
+<h2>Indicador</h2>
+<p>&nbsp</p>
+    <div id="gt_box_contbuttons">
+        <a class="ui-button ui-button-adicionar ui-float-left" href="../Indicador/Create"><span class="ui-button-img"></span><span class="ui-button-txt">Agregar Proyección de Ventas</span></a>
+    </div>
+<table  class="table">
+    <tr>
+        <th>
+            Tipo de Indicador
+        </th>
+        <th>
+            Ventas Proyectadas
+        </th>
+
+        <th>
+            Periodo Mes
+        </th>
+        <th>
+            Periodo Año
+        </th>
+        <th>
+            Fecha de Registro
+        </th>
+        <th>Acciones </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDeIndicador.TipoDeIndicadorNm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetaProyectada)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.PeriodoMes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeriodoAno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaRegistro)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IndicadorID }) |     
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IndicadorID })
+        </td>
+    </tr>
+}
+
+</table>
+</div> 

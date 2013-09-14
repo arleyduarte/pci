@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.Cliente
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="CreacionNuevo">
+<h2>Nuevo Cliente</h2>
+<p>&nbsp</p>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-1.5.1.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.js")" type="text/javascript"></script>
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NIT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NIT)
+            @Html.ValidationMessageFor(model => model.NIT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NmCliente)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NmCliente)
+            @Html.ValidationMessageFor(model => model.NmCliente)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RazonSocial)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RazonSocial)
+            @Html.ValidationMessageFor(model => model.RazonSocial)
+        </div>
+
+        <div class="editor-label">
+            Objeto Social
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ObjetoSocial)
+            @Html.ValidationMessageFor(model => model.ObjetoSocial)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PaisID, "Pais")
+        </div>
+
+        <div class="editor-field">
+            @Html.DropDownList("PaisID")
+            @Html.ValidationMessageFor(model => model.PaisID)
+        </div>
+
+        <div class="editor-label">
+            Ciudad
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CiudadNm)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Direccion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Direccion)
+            @Html.ValidationMessageFor(model => model.Direccion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telefono1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telefono1)
+            @Html.ValidationMessageFor(model => model.Telefono1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telefono2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telefono2)
+            @Html.ValidationMessageFor(model => model.Telefono2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaCumpleanos)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaCumpleanos)
+            @Html.ValidationMessageFor(model => model.FechaCumpleanos)
+        </div>
+
+
+
+        <p>
+            <input type="submit" value="Crear" class="btn btn-primary" />
+        </p>
+    </fieldset>
+}
+
+</div> 
+
+ <div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

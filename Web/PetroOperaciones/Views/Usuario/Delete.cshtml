@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Desactivar</h2>
+
+<h3>¿Esta seguro que desea desactivar este usuario?</h3>
+<fieldset>
+    <legend>Usuario</legend>
+
+    <div class="display-label">Cedula</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cedula)
+    </div>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+    <div class="display-label">Rol</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoRol.Descripcion)
+    </div>
+
+    <div class="display-label">Teléfono</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefono)
+    </div>
+
+    <div class="display-label">Celular</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Celular)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">Nombre Usuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NombreUsuario)
+    </div>
+
+    <div class="display-label">Clave</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Clave)
+    </div>
+
+
+
+    <div class="display-label">Fecha Creación</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaCreacion)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Desactivar" /> |
+        @Html.ActionLink("Regresar", "Index")
+    </p>
+}

@@ -1,0 +1,50 @@
+﻿@model PetroOperaciones.Models.Contacto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Contacto</legend>
+
+    <div class="display-label">ContactoNm</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContactoNm)
+    </div>
+
+    <div class="display-label">Telefono</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefono)
+    </div>
+
+    <div class="display-label">Celular</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Celular)
+    </div>
+
+    <div class="display-label">FechaCumpleanos</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaCumpleanos)
+    </div>
+
+    <div class="display-label">Cargo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cargo)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">Cliente</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cliente.NIT)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ContactoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

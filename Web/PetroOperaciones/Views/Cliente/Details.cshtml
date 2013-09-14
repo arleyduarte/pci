@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<fieldset class="ConsolidadosReportes">
+   <h2> @Html.DisplayFor(model => model.NmCliente)</h2>
+   <p>&nbsp</p>
+
+
+   <table class="gt_tbl_searchparameters" >
+
+
+			<tr>
+				<td class="tbl_name">NIT</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.NIT)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Razon Social</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.RazonSocial)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Objeto Social</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.ObjetoSocial)</td>
+			</tr>
+
+
+			<tr>
+				<td class="tbl_name">País</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Pais.PaisNm)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Dirección</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Direccion)</td>
+			</tr>
+             
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Telefono1)</td>
+			</tr>
+
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info">@Html.DisplayFor(model => model.Telefono2)</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Fecha Cumpleaños</td>
+				<td class="tbl_info">@Model.FechaCumpleanos.ToShortDateString()</td>
+			</tr>
+
+
+	</table>
+
+
+<div id="gt_box_contbuttons">
+
+   <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>
+
+   <a class="ui-button ui-button-inscribir ui-float-left" href="../Edit/@Model.ClienteID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Editar</span></a>
+
+   <a class="ui-button ui-button-exppdf ui-float-left" href="../../ArchivoDocumentoCliente/Create?ClienteID=@Model.ClienteID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Documentos</span></a>
+
+   <a class="ui-button ui-button-cambiaruser ui-float-left" href="../../Contacto/ClienteList?ClienteID=@Model.ClienteID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Contactos</span></a>
+
+
+</div>
+
+
+</fieldset>
+

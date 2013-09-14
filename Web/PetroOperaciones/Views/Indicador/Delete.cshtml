@@ -1,0 +1,48 @@
+﻿@model PetroOperaciones.Models.Facturacion.Indicador
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+
+<h3>¿Esta seguro que desea eliminar esta información?</h3>
+<fieldset>
+    <legend>Indicador</legend>
+
+    <div class="display-label">Tipo de Indicador</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDeIndicador.TipoDeIndicadorNm)
+    </div>
+
+    <div class="display-label">Ventas  Proyectadas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MetaProyectada)
+    </div>
+
+
+
+    <div class="display-label">Mes</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PeriodoMes)
+    </div>
+
+    <div class="display-label">Ano</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PeriodoAno)
+    </div>
+
+    <div class="display-label">FechaRegistro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaRegistro)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Eliminar" /> 
+    </p>
+}
+
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>

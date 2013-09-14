@@ -1,0 +1,133 @@
+﻿/*- BOTONES NAVEGACIÓN MODIFICADOS-*/
+#gt_box_contbuttons a.ui-button {
+	background:url("../Content/img/buttons/btn_gen-left-xl.png") repeat-x;
+	height:32px;
+	margin-left:10px;
+}
+
+#gt_box_contbuttons span.ui-button-txt {
+	background: url("../Content/img/buttons/btn_gen-right-xl.png") no-repeat scroll 100% 0 transparent;
+	color: #666;
+	cursor: pointer;
+	display: inline;
+	float: left;
+	font-size:11px;
+	line-height:24px;
+	font-weight:bold;
+	margin: 0 -3px;
+	padding: 2px 10px 6px 8px;
+}
+#gt_box_contbuttons span.ui-button-img {
+	display: inline-block;
+	float: left;
+	height:32px;
+	width:32px;
+}
+#gt_box_contbuttons .ui-button-aceptar .ui-button-img,
+#gt_box_contbuttons .ui-button-activar .ui-button-img,
+#gt_box_contbuttons .ui-button-actualizar .ui-button-img,
+#gt_box_contbuttons .ui-button-adicionar .ui-button-img,
+#gt_box_contbuttons .ui-button-buscar .ui-button-img,
+#gt_box_contbuttons .ui-button-cambiaruser .ui-button-img,
+#gt_box_contbuttons .ui-button-cancelar .ui-button-img,
+#gt_box_contbuttons .ui-button-consultar .ui-button-img,
+#gt_box_contbuttons .ui-button-continuar .ui-button-img,
+#gt_box_contbuttons .ui-button-desactivarsel .ui-button-img,
+#gt_box_contbuttons .ui-button-descargar .ui-button-img,
+#gt_box_contbuttons .ui-button-editar .ui-button-img,
+#gt_box_contbuttons .ui-button-eliminar .ui-button-img,
+#gt_box_contbuttons .ui-button-expexcel .ui-button-img,
+#gt_box_contbuttons .ui-button-exppdf .ui-button-img,
+#gt_box_contbuttons .ui-button-finalizar .ui-button-img,
+#gt_box_contbuttons .ui-button-finpago .ui-button-img,
+#gt_box_contbuttons .ui-button-guardar .ui-button-img,
+#gt_box_contbuttons .ui-button-imprimir .ui-button-img,
+#gt_box_contbuttons .ui-button-inscribir .ui-button-img,
+#gt_box_contbuttons .ui-button-pagar .ui-button-img,
+#gt_box_contbuttons .ui-button-reutilizar .ui-button-img,
+#gt_box_contbuttons .ui-button-seleccionar .ui-button-img,
+#gt_box_contbuttons .ui-button-solicitar .ui-button-img,
+#gt_box_contbuttons .ui-button-volver .ui-button-img,
+#gt_box_contbuttons .ui-button-volvercomercio .ui-button-img  {
+	background:url(../Content/img/buttons/botones_sprit-xl.png) no-repeat transparent;
+	cursor:pointer;	
+}
+
+#gt_box_contbuttons .ui-button-aceptar .ui-button-img{
+	background-position:0px 0px;
+}
+#gt_box_contbuttons .ui-button-activar .ui-button-img{
+	background-position:0px -32px;
+}
+#gt_box_contbuttons .ui-button-actualizar .ui-button-img{
+	background-position:0px -64px;
+}
+#gt_box_contbuttons .ui-button-adicionar .ui-button-img{
+	background-position:0px -96px;
+}
+#gt_box_contbuttons .ui-button-buscar .ui-button-img{
+	background-position:0px -128px;
+}
+#gt_box_contbuttons .ui-button-cambiaruser .ui-button-img{
+	background-position:0px -160px;
+}
+#gt_box_contbuttons .ui-button-cancelar .ui-button-img{
+	background-position:0px -192px;
+}
+#gt_box_contbuttons .ui-button-consultar .ui-button-img{
+	background-position:0px -224px;
+}
+#gt_box_contbuttons.ui-button-continuar .ui-button-img{
+	background-position:0px -256px;
+}
+#gt_box_contbuttons .ui-button-desactivarsel .ui-button-img{
+	background-position:0px -288px;
+}
+#gt_box_contbuttons .ui-button-descargar .ui-button-img{
+	background-position:0px -320px;
+}
+#gt_box_contbuttons .ui-button-editar .ui-button-img{
+	background-position:0px -352px;
+}
+#gt_box_contbuttons .ui-button-eliminar .ui-button-img{
+	background-position:0px -384px;
+}
+#gt_box_contbuttons .ui-button-expexcel .ui-button-img{
+	background-position:0px -416px;
+}
+#gt_box_contbuttons .ui-button-exppdf .ui-button-img{
+	background-position:0px -448px;
+}
+#gt_box_contbuttons .ui-button-finalizar .ui-button-img{
+	background-position:0px -480px;
+}
+#gt_box_contbuttons .ui-button-finpago .ui-button-img{
+	background-position:0px -512px;
+}
+#gt_box_contbuttons .ui-button-guardar .ui-button-img{
+	background-position:0px -544px;
+}
+#gt_box_contbuttons .ui-button-imprimir .ui-button-img{
+	background-position:0px -576px;
+}
+#gt_box_contbuttons .ui-button-inscribir .ui-button-img{
+	background-position:0px -608px;
+}
+#gt_box_contbuttons .ui-button-pagar .ui-button-img{
+	background-position:0px -640px;
+}
+#gt_box_contbuttons .ui-button-reutilizar .ui-button-img{
+	background-position:0px -672px;
+}
+#gt_box_contbuttons .ui-button-seleccionar .ui-button-img{
+	background-position:0px -704px;
+}
+#gt_box_contbuttons .ui-button-solicitar .ui-button-img{
+	background-position:0px -736px;
+}
+#gt_box_contbuttons .ui-button-volver .ui-button-img{
+	background-position:0px -768px;
+}
+#gt_box_contbuttons .ui-button-volvercomercio .ui-button-img{
+	background-position:0px -800px;
+}

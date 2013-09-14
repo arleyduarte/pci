@@ -1,0 +1,321 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #70872D. If you'd like
+to use a different color start by replacing all instances of
+#70872D with your new color.
+----------------------------------------------------------*/
+body {
+    background-color:#70872D;
+    font-size: 75%;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: black;
+    background-image: url('../Content/page_t.png');
+}
+
+a:link {
+    color: Black;
+    
+}
+
+a:visited {
+    color: Black;
+}
+
+.frame
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 50em;
+	text-align: left;
+	height:500px;
+}
+
+.frameReportes
+{
+	width: 200%;
+	height: 600px;
+	text-align: center;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+
+
+/* HEADINGS   
+----------------------------------------------------------*/
+textarea {
+    min-height: 85px;
+    min-width:600px;
+    width: 400px;
+}/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+
+#logindisplay {
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    margin: 10px;
+    color: White;
+    
+}
+
+#logindisplay a:link {
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+
+.table 
+{
+    font-size: 90%;
+
+}
+
+
+
+.table th 
+{
+    font-size: 110%;
+    padding: 3px 3px;
+    background-color: #597c18;
+    border: solid 1px #a1a1a1;
+    color: White;
+    font-weight:bold;
+}
+
+
+.table th a:link {
+    color: White;
+    text-decoration: none;
+}
+
+.table th a:visited {
+    color: White;
+    text-decoration: none;
+}
+
+.table tr.striped {
+        background-color: #F5F3E5;
+      }
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+
+.loginLeft{
+    width: 80%;
+    
+}
+.loginRight{
+    width: 20%;
+}
+
+
+.page {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header, #header {
+    position: relative;
+    margin-bottom: 0px;
+    color: #000;
+    padding: 0;
+}
+
+header h1, #header h1 {
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+    color: #fff;
+    border: none;
+    line-height: 2em;
+    font-size: 32px !important;
+    text-shadow: 1px 1px 2px #111;
+}
+
+#main {
+    padding: 15px 15px 15px 15px;
+    background-color: #fff;
+    border-radius: 4px 0 0 0;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+}
+
+footer, 
+#footer {
+    background-color: #fff;
+    color: #999;
+    padding: 10px 0;
+    text-align: center;
+    line-height: normal;
+    margin: 0 0 30px 0;
+    font-size: .9em;
+    border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+}
+
+
+
+
+.CreacionNuevo{
+	width:98%;
+	font-size: 95%;
+	padding:1px 1% 15px 1%;
+	border:1px solid #a1a1a1;
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+	margin:5px 20px 10px 0px;
+}
+
+
+.MarcoReporte{
+	width:98%;
+	height:450px;
+	text-align: center;
+	
+
+}
+ .webgrid-selected-row
+  {
+       font-weight: bold;
+       font-size: 120%;
+  }
+  
+.Consolidados span{
+	font-size:12px;
+}
+
+.ConsolidadosPQ{
+	width:98%;
+	padding:1px 1% 15px 1%;
+	border:1px solid #a1a1a1;
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+	background-color:#f5f3e6;
+	margin:15px 10px 10px 0px;
+}
+.ConsolidadosPQ table{
+	width:30%;
+	margin-top:5px;
+	border:1px solid #a1a1a1;
+	line-height:24px;
+	background-color:#FFF;
+	
+}
+
+.ConsolidadosReportes{
+	width:98%;
+	padding:1px 1% 15px 1%;
+	border:1px solid #a1a1a1;
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+	background-color:#ffffff;
+	margin:15px 10px 10px 0px;
+}
+
+
+/*Tabla Detalles en DO*/
+
+.gt_tbl_searchparameters
+{
+		width:90%;
+	border:1px solid #a1a1a1;
+	border-collapse: separate;
+	border-left: 10;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 4px;
+	margin-bottom:15px;
+	line-height:20px;
+	padding:10px 10px 10px 10px;
+}
+
+.gt_tbl_check
+{
+	width:90%;
+	font-size: 105%;
+	border:1px solid #a1a1a1;
+	border-collapse: separate;
+	border-left: 20;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 4px;
+	margin-bottom:15px;
+	line-height:20px;
+	padding:10px 10px 10px 10px;
+}
+
+}
+.gt_tbl_searchparameters td{
+	padding:10px;	
+}
+.gt_tbl_searchparameters span{
+	font-weight:bold;
+}
+.gt_tbl_searchparameters .gt_tbl_general td {
+	padding:10px 13px;
+}
+.gt_tbl_searchparameters .gt_tbl_general th {
+	color:#002177;
+}
+
+.tbl_name {
+	width:20%;	
+	font-weight:bold;
+}
+
+.tbl_name_short {
+	width:8%;	
+	font-weight:bold;
+}
+
+
+
+

@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model IEnumerable<PetroOperaciones.Models.Facturacion.Concepto>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+<br />
+
+<div class="ConsolidadosPQ">
+<h2>Conceptos </h2>
+<p>&nbsp</p>
+<table class="table">
+    <tr>
+        <th>
+            Concepto
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConceptoNm)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ConceptoID }) |
+  
+          </td>
+    </tr>
+}
+
+</table>
+</div>

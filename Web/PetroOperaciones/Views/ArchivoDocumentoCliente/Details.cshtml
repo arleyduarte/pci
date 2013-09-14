@@ -1,0 +1,45 @@
+﻿@model PetroOperaciones.Models.ArchivoDocumentoCliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ArchivoDocumentoCliente</legend>
+
+    <div class="display-label">Cliente</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cliente.NIT)
+    </div>
+
+    <div class="display-label">Usuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Usuario.Cedula)
+    </div>
+
+    <div class="display-label">TipoDocumentoTercero</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoDocumentoTercero.TipoDocumentoTerceroNm)
+    </div>
+
+    <div class="display-label">NoDocumento</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoDocumento)
+    </div>
+
+    <div class="display-label">NombreArchivo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NombreArchivo)
+    </div>
+
+    <div class="display-label">FechaRegistro</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaRegistro)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ArchivoDocumentoClienteID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

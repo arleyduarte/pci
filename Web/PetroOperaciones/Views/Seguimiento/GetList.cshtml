@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PetroOperaciones.Models.Seguimiento>
+           
+@{
+    ViewBag.Title = "List";
+    WebGrid grid = new WebGrid(Model, canPage:false);
+}
+<div class="Consolidados">
+@grid.GetHtml(
+        fillEmptyRows: true,
+        alternatingRowStyle: "fila-alternativa",
+        headerStyle: "encabezado-grid",
+        tableStyle: "table table-bordered",
+        footerStyle: "pie-grid",
+        mode: WebGridPagerModes.All,
+        firstText: "<< Primera",
+        previousText: "< Anterior",
+        nextText: "Siguiente >",
+        lastText: "Última >>",
+    columns: new [] {
+         grid.Column("SeguimientoID", 
+                header: "No",
+                format: p=>p.SeguimientoID),        
+         grid.Column("Observaciones", 
+                header: "Observaciones",
+                format: p=>p.Observaciones),
+         grid.Column("Nombre", 
+                header: "Responsable",
+                format: p=>p.Usuario.Nombre) ,                               
+         grid.Column("FechaRegistro", 
+                header: "Fecha de Registro",
+                format: (item) => item.FechaRegistro.ToString("dd/MM/yyyy")),
+        grid.Column("FechaRegistro", 
+                header: "Hora",
+                format: (item) => item.FechaRegistro.ToString("HH:mm"))                                
+})
+
+</div>
+

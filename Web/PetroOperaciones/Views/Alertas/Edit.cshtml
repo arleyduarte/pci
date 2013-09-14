@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.Alertas
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar</h2>
+<p>&nbsp</p>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Alertas</legend>
+
+        @Html.HiddenFor(model => model.AlertaID)
+        @Html.HiddenFor(model => model.Estado)
+        @Html.HiddenFor(model => model.FechaCreacion)
+        @Html.HiddenFor(model => model.AlertaNm)
+
+
+        <div class="editor-label">
+           Alerta
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Asunto, new { disabled = "disabled", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Asunto)
+            
+        </div>
+
+        <div class="editor-label">
+           Para (Se deben ingresar los correos separados por comas)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.EmailTo)
+            @Html.ValidationMessageFor(model => model.EmailTo)
+            
+        </div>
+
+        <div class="editor-label">
+            Con Copia (Se deben ingresar los correos separados por comas)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.EmailCC)
+            @Html.ValidationMessageFor(model => model.EmailCC)
+        </div>
+
+        <div class="editor-label">
+           Con Copia Oculta (Se deben ingresar los correos separados por comas)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.EmailBCC)
+            @Html.ValidationMessageFor(model => model.EmailBCC)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Editar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Atras", "Index")
+</div>

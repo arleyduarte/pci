@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model PetroOperaciones.Models.TipoOperacion
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar</h2>
+
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Descripción de la Operación</legend>
+
+        @Html.HiddenFor(model => model.TipoOperacionID)
+
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TipoOperacionNm)
+            @Html.ValidationMessageFor(model => model.TipoOperacionNm)
+        </div>
+
+        <p>
+            <input type="submit" value="Guardar" class="btn btn-primary" />
+        </p>
+    </fieldset>
+}
+
+
+ <div class="btn-group">
+     <a class="btn" href="javascript:history.go(-1)"><i class="icon-step-backward"></i> Regresar</a>
+</div>

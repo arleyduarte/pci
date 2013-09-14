@@ -1,0 +1,148 @@
+﻿@model PetroOperaciones.Models.DocumentoOperaciones
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>DocumentoOperaciones</legend>
+
+    <div class="display-label">NumeroDO</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumeroDO)
+    </div>
+
+    <div class="display-label">Cliente</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cliente.NIT)
+    </div>
+
+    <div class="display-label">Pais</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pais.PaisNm)
+    </div>
+
+    <div class="display-label">ClaseMercancia</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ClaseMercancia)
+    </div>
+
+    <div class="display-label">TipoContenedor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TipoContenedor.TipoContenedorNm)
+    </div>
+
+    <div class="display-label">PesoBruto</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PesoBruto)
+    </div>
+
+    <div class="display-label">NoPiezas</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoPiezas)
+    </div>
+
+    <div class="display-label">Volumen</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Volumen)
+    </div>
+
+    <div class="display-label">Valor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Valor)
+    </div>
+
+    <div class="display-label">MedioTransporte</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MedioTransporte.MedioTransporteNm)
+    </div>
+
+    <div class="display-label">AWB</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AWB)
+    </div>
+
+    <div class="display-label">HAWB</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HAWB)
+    </div>
+
+    <div class="display-label">BL</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BL)
+    </div>
+
+    <div class="display-label">HBL</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HBL)
+    </div>
+
+    <div class="display-label">Buque</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Buque)
+    </div>
+
+    <div class="display-label">Vuelo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vuelo)
+    </div>
+
+    <div class="display-label">Transportador</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Transportador.TransportadorNm)
+    </div>
+
+    <div class="display-label">Shipper</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Shipper)
+    </div>
+
+    <div class="display-label">PuertoO</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PuertoO.PuertoNm)
+    </div>
+
+    <div class="display-label">PuertoD</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PuertoD.PuertoNm)
+    </div>
+
+    <div class="display-label">EstadoDO</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EstadoDO.EstadoNm)
+    </div>
+
+    <div class="display-label">UsuarioC</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UsuarioC.Cedula)
+    </div>
+
+    <div class="display-label">UsuarioR</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UsuarioR.Cedula)
+    </div>
+
+    <div class="display-label">FechaCreacion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaCreacion)
+    </div>
+
+    <div class="display-label">FechaCierre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaCierre)
+    </div>
+
+    <div class="display-label">Observaciones</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Observaciones)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

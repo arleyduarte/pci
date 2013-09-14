@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+
+@model IEnumerable<PetroOperaciones.Models.TipoOperacion>
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model, canPage: false, canSort: false);
+}
+
+<br />
+
+<div class="Consolidados">
+<h2>Descripción de la Operación</h2>
+<p>&nbsp</p>
+@grid.GetHtml(
+                    fillEmptyRows: true,
+                    alternatingRowStyle: "fila-alternativa",
+                    headerStyle: "encabezado-grid",
+                    footerStyle: "pie-grid",
+                    tableStyle: "table table-bordered",
+                    mode: WebGridPagerModes.All,
+                    firstText: "<< Primera",
+                    previousText: "< Anterior",
+                    nextText: "Siguiente >",
+                    lastText: "Última >>",
+    columns: new [] {
+         grid.Column("TipoOperacionID", 
+                header: "Consecutivo",
+                format: p=>p.TipoOperacionID),
+         grid.Column("TipoOperacionNm", 
+                header: "Descripción",
+                format: p=>p.TipoOperacionNm),
+            
+
+            
+        grid.Column(
+                "", 
+                header: "Acciones",
+                
+                format: @<text>
+                <div class="btn-group">
+                    <a class="btn" href="Edit/@item.TipoOperacionID"><i class="icon-edit"></i> Editar</a> 
+                    <a class="btn" href="Delete/@item.TipoOperacionID"><i class="icon-trash"></i> Eliminar</a>
+                </div>
+             </text>
+                
+ 
+    )                
+})
+
+
+</div> 
+ <div class="btn-group">
+     <a class="btn" href="javascript:history.go(-1)"><i class="icon-step-backward"></i> Regresar</a>
+</div>

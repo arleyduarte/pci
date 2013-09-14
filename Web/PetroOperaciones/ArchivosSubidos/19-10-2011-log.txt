@@ -1,0 +1,11 @@
+ERROR2011-11-18 08:57:13 – System.NullReferenceException: Object reference not set to an instance of an object.
+   at U2XMLParser.com.amdp.dat.DatFileReader.loadFileStructure(String path) in C:\Dropbox\Proyectos\2011\PP023-Optica\Codigo\Consola\U2XMLParser\U2XMLParser\com\amdp\dat\DatFileReader.cs:line 84
+   at U2XMLParser.com.amdp.dat.U2DataParser.DatToXML() in C:\Dropbox\Proyectos\2011\PP023-Optica\Codigo\Consola\U2XMLParser\U2XMLParser\com\amdp\dat\U2DataParser.cs:line 40
+   at U2XMLParser.Program.createXMLFiles() in C:\Dropbox\Proyectos\2011\PP023-Optica\Codigo\Consola\U2XMLParser\U2XMLParser\Program.cs:line 42
+   at U2XMLParser.Program.Main(String[] args) in C:\Dropbox\Proyectos\2011\PP023-Optica\Codigo\Consola\U2XMLParser\U2XMLParser\Program.cs:line 23
+INFO 2011-11-18 08:58:35 – Reading the file: D:\\DatTransformU2\PLAPED.dat
+INFO 2011-11-18 08:58:47 – Starting Writing for a request for an order: D:\\DatTransformU2//sample_vs_rx_order_PLAPED.xml
+INFO 2011-11-18 08:58:47 – Starting Writing for a request for an order with shape path: D:\\DatTransformU2//sample_vs_rx_order_real_with_shape_PLAPED.xml
+INFO 2011-11-18 09:10:07 – Reading the file: .\PLAPED.dat
+INFO 2011-11-18 09:10:07 – Starting Writing for a request for an order: .//sample_vs_rx_order_PLAPED.xml
+INFO 2011-11-18 09:10:07 – Starting Writing for a request for an order with shape path: .//sample_vs_rx_order_real_with_shape_PLAPED.xml

@@ -1,0 +1,358 @@
+﻿@model PetroOperaciones.Models.Facturacion.PrefacturaViewModel
+       
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml"; 
+    ViewBag.Title = "Create";
+}
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#ConceptoID').attr('rel', '1');
+        $('#prefacturaEncabezadoId').attr('value', '@Model.PrefacturaEncabezado.PrefacturaEncabezadoID');
+
+    });
+	
+</script>
+
+
+<fieldset class="ConsolidadosReportes">
+<p><h3>Prefactura No.  @Model.PrefacturaEncabezado.PrefacturaEncabezadoID  Documento de Operaciones  @Model.PrefacturaEncabezado.DocumentoOperaciones.NumeroDO</h3>  </p>
+<p>&nbsp</p>
+	<table class="gt_tbl_searchparameters" >
+			<tr>
+				<td class="tbl_name">Cliente</td>
+				<td class="tbl_info" id="cliente">@Model.PrefacturaEncabezado.NmCliente</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">NIT</td>
+				<td class="tbl_info" id="nit">@Model.PrefacturaEncabezado.NIT</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Dirección</td>
+				<td class="tbl_info" id="direccion">@Model.PrefacturaEncabezado.Direccion</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Teléfono</td>
+				<td class="tbl_info">@Model.PrefacturaEncabezado.Telefono1</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Tasa de Cambio</td>
+				<td class="tbl_info">$ @Model.PrefacturaEncabezado.TasaDeCambio</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Total Anticipos</td>
+				<td class="tbl_info">$ @Model.PrefacturaEncabezado.TotalAnticipos</td>
+			</tr>
+			<tr>
+				<td class="tbl_name">Usuario</td>
+				<td class="tbl_info" id="telefono2"> @Model.PrefacturaEncabezado.Usuario.Nombre</td>
+			</tr>
+	</table>
+
+	<table class="gt_tbl_searchparameters"  >
+
+			<tr>
+				<td class="tbl_name_short">AWB</td>
+				<td>@Model.PrefacturaEncabezado.DocumentoOperaciones.AWB</td>
+
+				<td class="tbl_name_short">HAWB</td>
+				<td>@Model.PrefacturaEncabezado.DocumentoOperaciones.HAWB</td>
+				
+				<td class="tbl_name_short">BL</td>
+				<td>@Model.PrefacturaEncabezado.DocumentoOperaciones.BL</td>	
+
+				<td class="tbl_name_short">HBL</td>
+				<td>@Model.PrefacturaEncabezado.DocumentoOperaciones.HBL</td>	
+                
+	            <td class="tbl_name_short">Peso</td>
+				<td>@Model.PrefacturaEncabezado.DocumentoOperaciones.PesoBruto</td>				
+
+                <td class="tbl_name_short">No Piezas</td>
+				<td>@Model.PrefacturaEncabezado.DocumentoOperaciones.NoPiezas</td>				
+                    			
+			</tr>			
+			<tr>
+				<td class="tbl_name_short" >Observaciones</td>
+				<td colspan="11" id="Observaciones">@Model.PrefacturaEncabezado.DocumentoOperaciones.Observaciones</td>
+			</tr>
+			<tr>
+				<td class="tbl_name_short" >Anotaciones</td>
+				<td colspan="11" id="Anotaciones">@Model.PrefacturaEncabezado.Anotaciones</td>
+			</tr>	   
+
+	</table>
+
+      			
+
+    
+<link href="@Url.Content("~/Content/demo_table_jui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/table/complete.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/table/jquery.dataTables.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/table/jquery.dataTables.editable.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/table/jquery.jeditable.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/table/jquery-ui.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/table/jquery.validate.js")" type="text/javascript"></script>
+    
+<script type="text/javascript" charset="utf-8">
+		    $(document).ready(function () {
+		        var id = -1; //simulation of id
+		        $('#example').dataTable({ bJQueryUI: true,
+
+		            "sPaginationType": "full_numbers"
+		        }).makeEditable({
+
+		            sAddURL: "AddData",
+		            sAddHttpMethod: "GET",
+		            sDeleteHttpMethod: "GET",
+                    sDeleteURL: "DeleteData",
+                    	"aoColumns": [
+                    			        { 	
+																					
+								        },
+														
+														
+                    			        {
+                                         
+				
+                    			        },
+                    			        {
+                					
+         
+                    			        },
+                    			        {
+   
+                    			        },
+                    			        {
+                        
+								        }
+								    ],
+            oAddNewRowButtonOptions: { label: "Agregar",
+		                icons: { primary: 'ui-icon-plus' }
+		            },
+		            oDeleteRowButtonOptions: { label: "Eliminar",
+		                icons: { primary: 'ui-icon-trash' }
+		            },
+                               oAddNewRowOkButtonOptions: {
+				label: "Aceptar",
+                                icons: { primary: 'ui-icon-check' },
+                                name: "action",
+                                value: "add-new"
+                            },
+                            oAddNewRowCancelButtonOptions: { 
+				label: "Cerrar",
+                                class: "back-class",
+                                name: "action",
+                                value: "cancel-add",
+                                icons: { primary: 'ui-icon-close' }
+                            },
+		            oAddNewRowFormOptions: {
+		                title: 'Agregar Concepto',
+		                show: "blind",
+		                hide: "explode",
+		                modal: true
+		            },
+		            sAddDeleteToolbarSelector: ".dataTables_length"
+
+		        });
+
+		    });
+		</script>
+
+
+
+<table  class="display" id="example">
+	<thead>
+		<tr>
+			<th>Tipo de Ingreso</th>
+			<th>Concepto</th>
+            <th>Detalles</th>
+			<th>Valor COP</th>
+			<th>Valor USD</th>
+			<th>Factura Soporte</th>
+		</tr>
+	</thead>
+	<tfoot>
+
+		<tr>
+			<th>Tipo de Ingreso</th>
+			<th>Concepto</th>
+            <th>Detalles</th>
+			<th>Valor COP</th>
+			<th>Valor USD</th>
+			<th>Factura Soporte</th>
+		</tr>
+
+
+	</tfoot>
+	<tbody>
+
+    @foreach (var item in Model.Detalles)
+    {
+        <tr id="@Html.DisplayFor(modelItem => item.PrefacturaDetalleID)">
+            <td class="read_only">
+               @Html.DisplayFor(modelItem => item.TipoDeIngreso.TipoDeIngresoNm)
+            </td>
+
+            <td class="read_only">
+               @Html.DisplayFor(modelItem => item.ConceptoNm)
+            </td>
+
+            <td class="read_only">
+               @Html.DisplayFor(modelItem => item.Detalles)
+            </td>
+
+            <td class="read_only">
+              $ @Html.DisplayFor(modelItem => item.ValorCOP)
+            </td>
+
+            <td class="read_only">
+             $ @Html.DisplayFor(modelItem => item.ValorUSD)
+            </td>
+            <td class="read_only">
+               @Html.DisplayFor(modelItem => item.FacturaSoporte)
+            </td>
+
+        </tr>
+    }
+	</tbody>
+</table>
+
+<p>&nbsp</p>
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-solicitar ui-float-left" href="../Factura/CreateWithPrefactura?PrefacturaEncabezadoID=@Model.PrefacturaEncabezado.PrefacturaEncabezadoID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Aceptar y Generar Factura de Venta</span></a>
+    <a class="ui-button ui-button-exppdf ui-float-left" href="GetInvoicePDFFile?prefacturaEncabezadoId=@Model.PrefacturaEncabezado.PrefacturaEncabezadoID&tipoMoneda=COP"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Generar en Pesos</span></a>
+    <a class="ui-button ui-button-exppdf ui-float-left" href="GetInvoicePDFFile?prefacturaEncabezadoId=@Model.PrefacturaEncabezado.PrefacturaEncabezadoID&tipoMoneda=USD"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Generar en Dolares</span></a>
+    <a class="ui-button ui-button-exppdf ui-float-left" href="GetInvoicePDFFile?prefacturaEncabezadoId=@Model.PrefacturaEncabezado.PrefacturaEncabezadoID&tipoMoneda=COPUSD"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Generar en COP y USD</span></a>
+    <a class="ui-button ui-button-editar ui-float-left" href="../Prefactura/Edit?id=@Model.PrefacturaEncabezado.PrefacturaEncabezadoID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Editar Encabezado</span></a>    
+    <a class="ui-button ui-button-eliminar ui-float-left" href="../Prefactura/Delete?id=@Model.PrefacturaEncabezado.PrefacturaEncabezadoID"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Eliminar</span></a> 
+
+</div>
+
+</fieldset>
+
+<div id="gt_box_contbuttons">
+    <a class="ui-button ui-button-volver ui-float-left" href="javascript:history.go(-1)"><span class="ui-button-img">&nbsp;</span><span class="ui-button-txt">Regresar</span></a>    
+</div>
+
+
+<script type="text/javascript">
+
+    function actualizarMonto(form) {
+
+        var montoOriginal = form.valorMoneda.value;
+        var monto = "";
+        if (isNumber(montoOriginal)) {
+            monto = montoOriginal;
+        }
+
+        else {
+            form.valorCOP.value = "$ 0";
+            form.valorUSD.value = "$ 0";
+        }
+
+        var moneda = form.moneda.value;
+
+
+        if (monto != "") {
+
+            var tasaCambio = limpiarTasaCambio(form.tasaCambioPrefactura.value); 
+
+            if (moneda === "USD") {
+                var montoEnPesos = monto * tasaCambio;
+                form.valorCOP.value = formatCurrency(montoEnPesos);
+                form.valorUSD.value = formatCurrency(monto);
+            }
+
+            else if (moneda === "COP") {
+                var montoEnDolares = monto / tasaCambio;
+                form.valorCOP.value = formatCurrency(monto);
+                form.valorUSD.value = formatCurrency(montoEnDolares);
+            }
+        }
+    }
+
+
+    function limpiarTasaCambio(tasaCambio) {
+        var str2 = tasaCambio.replace(".", "");
+        var str3 = str2.replace(",", ".");
+        return str3;
+    }
+</script>
+
+<script src="@Url.Content("~/Scripts/Validador.js")" type="text/javascript"></script>
+
+				
+<form id="formAddNewRow" action="#" style='width:450px;min-width:200px;font-size:0px'>
+<table style='font-size:12px;'  align='center'>
+
+	<tr>
+        <td>Tipo Ingreso</td>
+    </tr>
+    <tr>
+        <td>	    
+            <select name="tipoIngreso" id="tipoIngreso" rel="0">
+                    <option value='1'>INGRESOS PROPIOS NO GRAVADOS</option>
+                    <option value='2'>INGRESOS A TERCEROS</option>
+                    <option value='3'>INGRESOS PROPIOS</option>
+            </select>
+        </td>
+	</tr>
+
+	<tr>
+        <td>Concepto</td>
+    </tr>
+    <tr>
+        <td>	    
+            @Html.DropDownList("ConceptoID")
+        </td>
+	</tr>
+
+	<tr>
+        <td>Detalles</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" name="detalles"   rel="2" />	    
+        </td>
+	</tr>
+
+	<tr>
+        <td>Moneda</td>
+    </tr>
+    <tr>
+        <td>	    
+	        <select name="moneda" id="moneda" onchange="actualizarMonto(this.form)">
+                    <option value="COP">Pesos</option>
+                    <option value="USD">Dolares</option>                
+            </select>
+        </td>
+	</tr>
+
+	<tr>
+        <td>Valor</td>
+    </tr>
+    <tr>
+        <td>	    
+         <input type="text" name="valorMoneda"  onblur="actualizarMonto(this.form)" />
+        </td>
+	</tr>
+
+	<tr>
+        <td>Factura Soporte</td>
+    </tr>
+    <tr>
+        <td>	    
+          <input type="text" name="soporte" rel="5" />
+        </td>
+	</tr>
+
+  </table>
+
+  <input type="hidden" name="tasaCambioPrefactura" id="tasaCambioPrefactura" value="@Model.PrefacturaEncabezado.TasaDeCambio"   />
+  <input type="hidden" name="valorCOP" id="valorCOP" rel="3"  />
+  <input type="hidden" name="valorUSD" id="valorUSD" rel="4"  />
+
+  <input type="hidden" name="prefacturaEncabezadoId" id="prefacturaEncabezadoId"  />
+
+</form>
