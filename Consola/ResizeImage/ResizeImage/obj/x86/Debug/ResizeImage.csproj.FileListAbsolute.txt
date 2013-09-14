@@ -1,0 +1,9 @@
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\bin\Debug\ResizeImage.exe
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\bin\Debug\ResizeImage.pdb
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\ResizeImage.Form1.resources
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\ResizeImage.Properties.Resources.resources
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\ResizeImage.exe
+D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\ResizeImage.pdb

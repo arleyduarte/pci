@@ -1,0 +1,5 @@
+D:\workspaceNet\PetroOperaciones\ChangeNameScript\ChangeNameScript\bin\Debug\ChangeNameScript.exe
+D:\workspaceNet\PetroOperaciones\ChangeNameScript\ChangeNameScript\bin\Debug\ChangeNameScript.pdb
+D:\workspaceNet\PetroOperaciones\ChangeNameScript\ChangeNameScript\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\workspaceNet\PetroOperaciones\ChangeNameScript\ChangeNameScript\obj\x86\Debug\ChangeNameScript.exe
+D:\workspaceNet\PetroOperaciones\ChangeNameScript\ChangeNameScript\obj\x86\Debug\ChangeNameScript.pdb
