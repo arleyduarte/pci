@@ -4,9 +4,9 @@ INSERT INTO TipoRol VALUES ('Cliente', 'Cliente');
 
 ALTER TABLE Usuario ADD CONSTRAINT FK_TipoRol FOREIGN KEY (Rol) REFERENCES TipoRol (Rol);
 
-select * from Usuario
+--select * from Usuario
 
-select * from Cliente
+--select * from Cliente
 
 
 ALTER TABLE Usuario ALTER COLUMN [Cedula] VARCHAR(20) NOT NULL;
@@ -37,6 +37,23 @@ getDate()
 from Cliente
 GO;
 
+SELECT REPLACE([NombreUsuario], '.', '') FROM Usuario order by [NombreUsuario]
+
+UPDATE Usuario SET [NombreUsuario] = REPLACE([NombreUsuario], '.', '');
+
+select REPLACE([NombreUsuario], '.', ''), count([NombreUsuario])
+
+
+from usuario 
+
+
+group by [NombreUsuario]
+
+
+having count([NombreUsuario])>1
+
+select * from usuario
+
 
 select * from DocumentoOperaciones
 
@@ -55,6 +72,7 @@ and COLUMN_NAME='VisibleCliente')
 ALTER TABLE ArchivoDocumento ADD VisibleCliente bit;
 GO
 
-update ArchivoDocumento set VisibleCliente = 1
+update ArchivoDocumento set VisibleCliente = 0
 
+select * from usuario
 

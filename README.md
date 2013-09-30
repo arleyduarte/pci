@@ -4,6 +4,7 @@ Updates 1.4.0
 ---------------------
 * Se incluye el módulo para consulta operaciones, seguimientos y documentos por parte de los clientes
 
+
 Updates 1.3.0
 ---------------------
 * Se incluye el check list para realizar el proceso de finalización de un Documento de Operaciones
