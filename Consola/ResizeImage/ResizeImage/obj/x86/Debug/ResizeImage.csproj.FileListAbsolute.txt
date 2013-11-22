@@ -7,3 +7,5 @@ D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\GenerateR
 D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\ResizeImage.exe
 D:\workspaceNet\PetroOperaciones\ResizeImage\ResizeImage\obj\x86\Debug\ResizeImage.pdb
+D:\workspaceNet\PCI\Consola\ResizeImage\ResizeImage\obj\x86\Debug\ResizeImage.exe
+D:\workspaceNet\PCI\Consola\ResizeImage\ResizeImage\obj\x86\Debug\ResizeImage.pdb
