@@ -4,6 +4,7 @@ Petro Operaciones Release Notes
 Updates 1.4.1
 ---------------------
 * Se excluye los seguimientos de los clientes en el reporte de seguimientos.
+* Se autocompleta el formuluario de cotización al seleccionar un cliente existente.
 
 Updates 1.4.0
 ---------------------

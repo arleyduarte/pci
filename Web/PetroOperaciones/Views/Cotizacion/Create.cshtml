@@ -20,9 +20,42 @@
 
         var nombreCliente = $("#NombreCliente");
         nombreCliente.focusout(function () {
-         
             $("#ClienteNm").val(nombreCliente.val());
+
         });
+
+
+
+        var Telefono = $("#Telefono");
+        Telefono.focusin(function () {
+            console.log("Evento");
+
+            var numeroTelefonico = Telefono.val();
+            var n = numeroTelefonico.length;
+            console.log("updateInfo:"+n);
+            if (n == 0) {
+                console.log("updateInfo");
+                updateInfo();
+            }
+
+            
+
+        });
+
+        function updateInfo() {
+            console.log(nombreCliente.val());
+
+            $.getJSON('@Url.Content("~/FacturacionServices/GetClienteByNm")', { nombre: nombreCliente.val() }, function (data) {
+                $(data).each(function () {
+                    $("#Direccion").val(this.Direccion);
+                    $("#Telefono").val(this.Telefono1);
+                    $("#telefono2").text(this.Telefono2);
+                });
+            });
+
+
+        }
+
 
 
     });

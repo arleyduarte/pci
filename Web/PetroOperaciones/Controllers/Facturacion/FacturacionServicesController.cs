@@ -14,7 +14,44 @@ namespace PetroOperaciones.Controllers.Facturacion
 
 
         private EfDbContext db = new EfDbContext();
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult GetClienteByNm(String nombre)
+        {
 
+            ArrayList list = new ArrayList();
+            Cliente cliente = new Cliente();
+            try
+            {
+                Cliente var = (from item in db.Clientes
+                               where item.NmCliente == nombre
+                               select item).First();
+                cliente.ClienteID = var.ClienteID;
+                cliente.NIT = var.NIT;
+                cliente.NmCliente = var.NmCliente;
+                cliente.Direccion = var.Direccion;
+                cliente.Telefono1 = var.Telefono1;
+                cliente.Telefono2 = var.Telefono2;
+                cliente.Pais = var.Pais;
+            }
+            catch (Exception e)
+            {
+
+            }
+
+          
+            
+
+
+
+
+            if (cliente != null)
+            {
+                list.Add(cliente);
+            }
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+
+        }
         [AcceptVerbs(HttpVerbs.Get)]
         public JsonResult GetClienteById(int ClienteId)
         {
