@@ -1,5 +1,10 @@
 Petro Operaciones Release Notes
 ========================
+
+Updates 1.4.1
+---------------------
+* Se excluye los seguimientos de los clientes en el reporte de seguimientos.
+
 Updates 1.4.0
 ---------------------
 * Se incluye el módulo para consulta operaciones, seguimientos y documentos por parte de los clientes

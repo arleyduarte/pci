@@ -202,6 +202,7 @@ namespace PetroOperaciones.Models
             rootElement.AppendChild(getElementCategoriesMeses(xmlDoc, year));
 
             var vItems = from p in db.Usuarios
+                         where p.Rol != TipoRol.CLIENTE
                          select p;
 
 
